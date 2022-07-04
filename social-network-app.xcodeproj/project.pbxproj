@@ -16,7 +16,6 @@
 		CE035A6D286C8566006D4288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE035A6B286C8566006D4288 /* LaunchScreen.storyboard */; };
 		CE035A78286C8566006D4288 /* social_network_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A77286C8566006D4288 /* social_network_appTests.swift */; };
 		CE035A82286C8567006D4288 /* social_network_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A81286C8567006D4288 /* social_network_appUITests.swift */; };
-		CE035A84286C8567006D4288 /* social_network_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A83286C8567006D4288 /* social_network_appUITestsLaunchTests.swift */; };
 		CE035A91286C865E006D4288 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE035A90286C865E006D4288 /* GoogleService-Info.plist */; };
 		CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D159E286F752100B3510C /* CoreDataManager.swift */; };
 		CE0D15A1286F754A00B3510C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A0286F754A00B3510C /* NetworkManager.swift */; };
@@ -61,7 +60,6 @@
 		CE035A77286C8566006D4288 /* social_network_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appTests.swift; sourceTree = "<group>"; };
 		CE035A7D286C8567006D4288 /* social-network-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "social-network-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE035A81286C8567006D4288 /* social_network_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appUITests.swift; sourceTree = "<group>"; };
-		CE035A83286C8567006D4288 /* social_network_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE035A90286C865E006D4288 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE0D159E286F752100B3510C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE0D15A0286F754A00B3510C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				CE035A81286C8567006D4288 /* social_network_appUITests.swift */,
-				CE035A83286C8567006D4288 /* social_network_appUITestsLaunchTests.swift */,
 			);
 			path = "social-network-appUITests";
 			sourceTree = "<group>";
@@ -558,7 +555,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE035A84286C8567006D4288 /* social_network_appUITestsLaunchTests.swift in Sources */,
 				CE035A82286C8567006D4288 /* social_network_appUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
