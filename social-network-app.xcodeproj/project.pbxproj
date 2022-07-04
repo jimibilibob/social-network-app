@@ -18,6 +18,9 @@
 		CE035A82286C8567006D4288 /* social_network_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A81286C8567006D4288 /* social_network_appUITests.swift */; };
 		CE035A84286C8567006D4288 /* social_network_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A83286C8567006D4288 /* social_network_appUITestsLaunchTests.swift */; };
 		CE035A91286C865E006D4288 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE035A90286C865E006D4288 /* GoogleService-Info.plist */; };
+		CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D159E286F752100B3510C /* CoreDataManager.swift */; };
+		CE0D15A1286F754A00B3510C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A0286F754A00B3510C /* NetworkManager.swift */; };
+		CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */; };
 		CEC2BBCC286C8A3A0093E307 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2BBCB286C8A3A0093E307 /* FirebaseAuth */; };
 		CEC2BBCE286C8A3A0093E307 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2BBCD286C8A3A0093E307 /* FirebaseFirestore */; };
 		CEC2BBD0286C8A3A0093E307 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2BBCF286C8A3A0093E307 /* FirebaseStorage */; };
@@ -60,6 +63,9 @@
 		CE035A81286C8567006D4288 /* social_network_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appUITests.swift; sourceTree = "<group>"; };
 		CE035A83286C8567006D4288 /* social_network_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE035A90286C865E006D4288 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE0D159E286F752100B3510C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE0D15A0286F754A00B3510C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseManager.swift; sourceTree = "<group>"; };
 		CEC2BBD3286C8CC70093E307 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CEC2BBD5286C8CE10093E307 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 		CE035A5C286C8565006D4288 /* social-network-app */ = {
 			isa = PBXGroup;
 			children = (
+				CE0D15A4286F75B600B3510C /* modules */,
 				CEC2BBDB286C8E7D0093E307 /* utilities */,
 				CEC2BBD1286C8CB80093E307 /* repository */,
 				CE035A90286C865E006D4288 /* GoogleService-Info.plist */,
@@ -149,9 +156,193 @@
 			path = "social-network-appUITests";
 			sourceTree = "<group>";
 		};
+		CE0D159A286F74E400B3510C /* local */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D159D286F751100B3510C /* managers */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		CE0D159D286F751100B3510C /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D159E286F752100B3510C /* CoreDataManager.swift */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
+		CE0D15A4286F75B600B3510C /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15A8286F75D900B3510C /* posts */,
+				CE0D15A7286F75CF00B3510C /* searchFriends */,
+				CE0D15A6286F75CA00B3510C /* friends */,
+				CE0D15A5286F75C200B3510C /* auth */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		CE0D15A5286F75C200B3510C /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15AD286F767900B3510C /* signup */,
+				CE0D15A9286F764700B3510C /* login */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		CE0D15A6286F75CA00B3510C /* friends */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15B1286F76E900B3510C /* firendsList */,
+			);
+			path = friends;
+			sourceTree = "<group>";
+		};
+		CE0D15A7286F75CF00B3510C /* searchFriends */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = searchFriends;
+			sourceTree = "<group>";
+		};
+		CE0D15A8286F75D900B3510C /* posts */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15B7286F775300B3510C /* postList */,
+			);
+			path = posts;
+			sourceTree = "<group>";
+		};
+		CE0D15A9286F764700B3510C /* login */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15AC286F766D00B3510C /* controllers */,
+				CE0D15AB286F766600B3510C /* viewModels */,
+				CE0D15AA286F765D00B3510C /* views */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		CE0D15AA286F765D00B3510C /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CE0D15AB286F766600B3510C /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		CE0D15AC286F766D00B3510C /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		CE0D15AD286F767900B3510C /* signup */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15B0286F769900B3510C /* views */,
+				CE0D15AF286F769300B3510C /* viewModels */,
+				CE0D15AE286F768E00B3510C /* controllers */,
+			);
+			path = signup;
+			sourceTree = "<group>";
+		};
+		CE0D15AE286F768E00B3510C /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		CE0D15AF286F769300B3510C /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		CE0D15B0286F769900B3510C /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CE0D15B1286F76E900B3510C /* firendsList */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15B5286F770D00B3510C /* viewModels */,
+				CE0D15B4286F770400B3510C /* controllers */,
+				CE0D15B2286F76F300B3510C /* views */,
+			);
+			path = firendsList;
+			sourceTree = "<group>";
+		};
+		CE0D15B2286F76F300B3510C /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CE0D15B4286F770400B3510C /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		CE0D15B5286F770D00B3510C /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		CE0D15B7286F775300B3510C /* postList */ = {
+			isa = PBXGroup;
+			children = (
+				CE0D15BA286F777100B3510C /* controllers */,
+				CE0D15B9286F776B00B3510C /* viewModels */,
+				CE0D15B8286F775A00B3510C /* views */,
+			);
+			path = postList;
+			sourceTree = "<group>";
+		};
+		CE0D15B8286F775A00B3510C /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		CE0D15B9286F776B00B3510C /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		CE0D15BA286F777100B3510C /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
 		CEC2BBD1286C8CB80093E307 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				CE0D159A286F74E400B3510C /* local */,
 				CEC2BBD7286C8D250093E307 /* network */,
 				CEC2BBD2286C8CBF0093E307 /* models */,
 			);
@@ -179,6 +370,8 @@
 			isa = PBXGroup;
 			children = (
 				CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */,
+				CE0D15A0286F754A00B3510C /* NetworkManager.swift */,
+				CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -341,10 +534,13 @@
 			files = (
 				CEC2BBD6286C8CE10093E307 /* BaseModel.swift in Sources */,
 				CE035A62286C8565006D4288 /* ViewController.swift in Sources */,
+				CE0D15A1286F754A00B3510C /* NetworkManager.swift in Sources */,
 				CEC2BBDA286C8D440093E307 /* FirebaseManager.swift in Sources */,
 				CE035A5E286C8565006D4288 /* AppDelegate.swift in Sources */,
+				CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */,
 				CE035A60286C8565006D4288 /* SceneDelegate.swift in Sources */,
 				CEC2BBDE286C8EB10093E307 /* EncodableExtension.swift in Sources */,
+				CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */,
 				CEC2BBD4286C8CC70093E307 /* User.swift in Sources */,
 				CE035A68286C8565006D4288 /* social_network_app.xcdatamodeld in Sources */,
 			);
@@ -523,6 +719,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9GDGJZFPVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "social-network-app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Social Network";
@@ -551,6 +748,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9GDGJZFPVD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "social-network-app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Social Network";

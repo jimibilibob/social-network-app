@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     @IBAction func addUser(_ sender: Any) {
         
-        let user = User(id: userID, name: "UserOne", age: 21)
+        let user = User(id: userID, name: "UserOne", age: 21, email: "jimibilibob@random.ra", password: "1243")
         
         firebaseManager.addDocument(document: user, collection: .users) { result in
             switch result {
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func editUser(_ sender: Any) {
-        let user = User(id: userID, name: "UserOneEdited", age: 28)
+        let user = User(id: userID, name: "UserOneEdited", age: 28, email: "another@gmail.com", password: "123456789")
 
         firebaseManager.updateDocument(document: user, collection: .users) { result in
             switch result {

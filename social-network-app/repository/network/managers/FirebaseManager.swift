@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 enum FirebaseErrors: Error {
     case ErrorToDecodeItem
+    case InvalidUser
 }
 
 enum FirebaseCollections: String {
