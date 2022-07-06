@@ -52,17 +52,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHH-lY-nl3">
+                                <rect key="frame" x="50" y="44" width="314" height="200"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Kqi-sD-VAP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eHH-lY-nl3" secondAttribute="trailing" constant="50" id="LH0-tx-Kzl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sBy-CI-dnF" secondAttribute="bottom" constant="10" id="MOd-z3-ICb"/>
+                            <constraint firstItem="eHH-lY-nl3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ot7-g3-AFG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sBy-CI-dnF" secondAttribute="trailing" constant="10" id="hGd-aV-e9Q"/>
                             <constraint firstItem="sBy-CI-dnF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="i51-sw-dqJ"/>
+                            <constraint firstItem="eHH-lY-nl3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="pgX-cf-bHm"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dataLabel" destination="sBy-CI-dnF" id="Sps-Zf-RZ4"/>
+                        <outlet property="viewController" destination="eHH-lY-nl3" id="AfI-Ui-ebd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,6 +82,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

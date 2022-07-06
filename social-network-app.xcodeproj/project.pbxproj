@@ -15,11 +15,12 @@
 		CE035A6A286C8566006D4288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE035A69286C8566006D4288 /* Assets.xcassets */; };
 		CE035A6D286C8566006D4288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE035A6B286C8566006D4288 /* LaunchScreen.storyboard */; };
 		CE035A78286C8566006D4288 /* social_network_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A77286C8566006D4288 /* social_network_appTests.swift */; };
-		CE035A82286C8567006D4288 /* social_network_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A81286C8567006D4288 /* social_network_appUITests.swift */; };
 		CE035A91286C865E006D4288 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE035A90286C865E006D4288 /* GoogleService-Info.plist */; };
 		CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D159E286F752100B3510C /* CoreDataManager.swift */; };
 		CE0D15A1286F754A00B3510C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A0286F754A00B3510C /* NetworkManager.swift */; };
 		CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */; };
+		CE554E04287291CB0097CC26 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE554E02287291CA0097CC26 /* SignUpViewController.swift */; };
+		CE554E05287291CB0097CC26 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE554E03287291CA0097CC26 /* SignUpViewController.xib */; };
 		CEC2BBCC286C8A3A0093E307 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2BBCB286C8A3A0093E307 /* FirebaseAuth */; };
 		CEC2BBCE286C8A3A0093E307 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2BBCD286C8A3A0093E307 /* FirebaseFirestore */; };
 		CEC2BBD0286C8A3A0093E307 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2BBCF286C8A3A0093E307 /* FirebaseStorage */; };
@@ -31,13 +32,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		CE035A74286C8566006D4288 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE035A52286C8565006D4288 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE035A59286C8565006D4288;
-			remoteInfo = "social-network-app";
-		};
-		CE035A7E286C8567006D4288 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE035A52286C8565006D4288 /* Project object */;
 			proxyType = 1;
@@ -58,12 +52,12 @@
 		CE035A6E286C8566006D4288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE035A73286C8566006D4288 /* social-network-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "social-network-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE035A77286C8566006D4288 /* social_network_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appTests.swift; sourceTree = "<group>"; };
-		CE035A7D286C8567006D4288 /* social-network-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "social-network-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE035A81286C8567006D4288 /* social_network_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appUITests.swift; sourceTree = "<group>"; };
 		CE035A90286C865E006D4288 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE0D159E286F752100B3510C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE0D15A0286F754A00B3510C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseManager.swift; sourceTree = "<group>"; };
+		CE554E02287291CA0097CC26 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CE554E03287291CA0097CC26 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		CEC2BBD3286C8CC70093E307 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CEC2BBD5286C8CE10093E307 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -88,13 +82,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE035A7A286C8567006D4288 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -103,7 +90,6 @@
 			children = (
 				CE035A5C286C8565006D4288 /* social-network-app */,
 				CE035A76286C8566006D4288 /* social-network-appTests */,
-				CE035A80286C8567006D4288 /* social-network-appUITests */,
 				CE035A5B286C8565006D4288 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,7 +99,6 @@
 			children = (
 				CE035A5A286C8565006D4288 /* social-network-app.app */,
 				CE035A73286C8566006D4288 /* social-network-appTests.xctest */,
-				CE035A7D286C8567006D4288 /* social-network-appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,14 +128,6 @@
 				CE035A77286C8566006D4288 /* social_network_appTests.swift */,
 			);
 			path = "social-network-appTests";
-			sourceTree = "<group>";
-		};
-		CE035A80286C8567006D4288 /* social-network-appUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CE035A81286C8567006D4288 /* social_network_appUITests.swift */,
-			);
-			path = "social-network-appUITests";
 			sourceTree = "<group>";
 		};
 		CE0D159A286F74E400B3510C /* local */ = {
@@ -270,6 +247,8 @@
 		CE0D15B0286F769900B3510C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				CE554E02287291CA0097CC26 /* SignUpViewController.swift */,
+				CE554E03287291CA0097CC26 /* SignUpViewController.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -432,24 +411,6 @@
 			productReference = CE035A73286C8566006D4288 /* social-network-appTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CE035A7C286C8567006D4288 /* social-network-appUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE035A8D286C8567006D4288 /* Build configuration list for PBXNativeTarget "social-network-appUITests" */;
-			buildPhases = (
-				CE035A79286C8567006D4288 /* Sources */,
-				CE035A7A286C8567006D4288 /* Frameworks */,
-				CE035A7B286C8567006D4288 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE035A7F286C8567006D4288 /* PBXTargetDependency */,
-			);
-			name = "social-network-appUITests";
-			productName = "social-network-appUITests";
-			productReference = CE035A7D286C8567006D4288 /* social-network-appUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -464,10 +425,6 @@
 						CreatedOnToolsVersion = 13.4;
 					};
 					CE035A72286C8566006D4288 = {
-						CreatedOnToolsVersion = 13.4;
-						TestTargetID = CE035A59286C8565006D4288;
-					};
-					CE035A7C286C8567006D4288 = {
 						CreatedOnToolsVersion = 13.4;
 						TestTargetID = CE035A59286C8565006D4288;
 					};
@@ -491,7 +448,6 @@
 			targets = (
 				CE035A59286C8565006D4288 /* social-network-app */,
 				CE035A72286C8566006D4288 /* social-network-appTests */,
-				CE035A7C286C8567006D4288 /* social-network-appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -501,6 +457,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE554E05287291CB0097CC26 /* SignUpViewController.xib in Resources */,
 				CE035A6D286C8566006D4288 /* LaunchScreen.storyboard in Resources */,
 				CE035A91286C865E006D4288 /* GoogleService-Info.plist in Resources */,
 				CE035A6A286C8566006D4288 /* Assets.xcassets in Resources */,
@@ -509,13 +466,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CE035A71286C8566006D4288 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE035A7B286C8567006D4288 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -535,6 +485,7 @@
 				CEC2BBDA286C8D440093E307 /* FirebaseManager.swift in Sources */,
 				CE035A5E286C8565006D4288 /* AppDelegate.swift in Sources */,
 				CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */,
+				CE554E04287291CB0097CC26 /* SignUpViewController.swift in Sources */,
 				CE035A60286C8565006D4288 /* SceneDelegate.swift in Sources */,
 				CEC2BBDE286C8EB10093E307 /* EncodableExtension.swift in Sources */,
 				CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */,
@@ -551,14 +502,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE035A79286C8567006D4288 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE035A82286C8567006D4288 /* social_network_appUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -566,11 +509,6 @@
 			isa = PBXTargetDependency;
 			target = CE035A59286C8565006D4288 /* social-network-app */;
 			targetProxy = CE035A74286C8566006D4288 /* PBXContainerItemProxy */;
-		};
-		CE035A7F286C8567006D4288 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE035A59286C8565006D4288 /* social-network-app */;
-			targetProxy = CE035A7E286C8567006D4288 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -804,40 +742,6 @@
 			};
 			name = Release;
 		};
-		CE035A8E286C8567006D4288 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ioan.social-network-appUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "social-network-app";
-			};
-			name = Debug;
-		};
-		CE035A8F286C8567006D4288 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ioan.social-network-appUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "social-network-app";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -864,15 +768,6 @@
 			buildConfigurations = (
 				CE035A8B286C8567006D4288 /* Debug */,
 				CE035A8C286C8567006D4288 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE035A8D286C8567006D4288 /* Build configuration list for PBXNativeTarget "social-network-appUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE035A8E286C8567006D4288 /* Debug */,
-				CE035A8F286C8567006D4288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

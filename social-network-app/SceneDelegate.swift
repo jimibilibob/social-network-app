@@ -10,13 +10,72 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    static weak var shared: SceneDelegate?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        Self.shared = self
+        setupRootControllerIfNeeded(validUser: false)
         guard let _ = (scene as? UIWindowScene) else { return }
+    }
+    
+    func setupRootControllerIfNeeded(validUser: Bool) {
+        let rootViewController = validUser
+            ? getRootViewControllerForValidUser()
+            : getRootViewControllerForInvalidUser()
+        self.window?.rootViewController = rootViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func getRootViewControllerForValidUser() -> UIViewController {
+        let tabBarVC = UITabBarController()
+        tabBarVC.view.backgroundColor = .systemBackground
+        UITabBar.appearance().barTintColor = .systemBackground
+        tabBarVC.tabBar.tintColor = UIColor(named: "primary")
+        
+        tabBarVC.viewControllers = [
+            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!),
+            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!),
+            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!),
+            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!)
+        ]
+        
+        return tabBarVC
+    }
+    
+    fileprivate func createNavController(for rootViewController: UIViewController,
+                                             title: String,
+                                             image: UIImage) -> UIViewController {
+            let navController = UINavigationController(rootViewController: rootViewController)
+            navController.tabBarItem.title = title
+            navController.tabBarItem.image = image
+
+            //navController.navigationBar.prefersLargeTitles = true
+            //navController.navigationBar.backgroundColor = UIColor(named: "primary")
+            navController.navigationBar.tintColor = .white
+            
+            
+            
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor(named: "primary")
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+            navController.navigationBar.standardAppearance = appearance
+            navController.navigationBar.scrollEdgeAppearance = appearance
+            
+            navController.modalPresentationStyle = .overFullScreen
+            
+            
+            rootViewController.navigationItem.title = title
+            
+            
+            return navController
+        }
+
+    func getRootViewControllerForInvalidUser() -> UIViewController {
+        SignUpViewController()
+        //createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill"))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -28,7 +28,20 @@
 		<key>social-network-app.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CE035A59286C8565006D4288</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE035A72286C8566006D4288</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

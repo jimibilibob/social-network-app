@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var viewController: UIView!
     let firebaseManager = FirebaseManager.shared
 
     var users = [User]()
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewController.layer.cornerRadius = 25
         userID = firebaseManager.getDocID(forCollection: .users)
         
         firebaseManager.listenCollectionChanges(type: User.self, collection: .users) { result in
