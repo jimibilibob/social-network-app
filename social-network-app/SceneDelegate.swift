@@ -15,15 +15,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         Self.shared = self
-        setupRootControllerIfNeeded(validUser: false)
+        setupRootControllerIfNeeded(validUser: true)
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
     func setupRootControllerIfNeeded(validUser: Bool) {
+        let nc = UINavigationController()
+ 
         let rootViewController = validUser
             ? getRootViewControllerForValidUser()
             : getRootViewControllerForInvalidUser()
-        self.window?.rootViewController = rootViewController
+        
+        nc.viewControllers = [rootViewController]
+        
+        self.window?.rootViewController = nc
         self.window?.makeKeyAndVisible()
     }
     
@@ -34,47 +39,45 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarVC.tabBar.tintColor = UIColor(named: "primary")
         
         tabBarVC.viewControllers = [
-            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!),
-            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!),
-            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!),
-            createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill")!)
+            createNavController(for: PostListViewController(), title: "Explore", image: UIImage(systemName: "house.fill")!),
+            createNavController(for: ChatListViewController(), title: "Chats", image: UIImage(systemName: "message.fill")!),
+            createNavController(for: ProfileViewController(), title: "Profile", image: UIImage(systemName: "person.circle.fill")!),
+            createNavController(for: SettingsViewController(), title: "Settings", image: UIImage(systemName: "gearshape.fill")!)
         ]
         
         return tabBarVC
     }
     
-    fileprivate func createNavController(for rootViewController: UIViewController,
-                                             title: String,
-                                             image: UIImage) -> UIViewController {
-            let navController = UINavigationController(rootViewController: rootViewController)
-            navController.tabBarItem.title = title
-            navController.tabBarItem.image = image
+    fileprivate func createNavController(for rootViewController: UIViewController, title: String, image: UIImage)-> UIViewController {
+        let navController = UINavigationController(rootViewController: rootViewController)
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
 
-            //navController.navigationBar.prefersLargeTitles = true
-            //navController.navigationBar.backgroundColor = UIColor(named: "primary")
-            navController.navigationBar.tintColor = .white
-            
-            
-            
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = UIColor(named: "primary")
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        //navController.navigationBar.prefersLargeTitles = true
+        //navController.navigationBar.backgroundColor = UIColor(named: "primary")
+        navController.navigationBar.tintColor = UIColor(named: "primary")
+        
+        
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: "primary")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
-            navController.navigationBar.standardAppearance = appearance
-            navController.navigationBar.scrollEdgeAppearance = appearance
-            
-            navController.modalPresentationStyle = .overFullScreen
-            
-            
-            rootViewController.navigationItem.title = title
-            
-            
-            return navController
-        }
+        navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
+        
+        navController.modalPresentationStyle = .overFullScreen
+        
+        
+        rootViewController.navigationItem.title = title
+        
+        
+        return navController
+    }
 
     func getRootViewControllerForInvalidUser() -> UIViewController {
-        SignUpViewController()
+        LoginViewController()
         //createNavController(for: SignUpViewController(), title: "Sign In", image: UIImage(systemName: "newspaper.fill"))
     }
 
