@@ -9,6 +9,8 @@ import UIKit
 
 class ChatDetailViewController: UIViewController {
 
+    @IBOutlet var messageTextField: UITextField!
+    @IBOutlet var sendMessageButton: UIButton!
     @IBOutlet var mainViewBackground: UIView!
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var avatarImage: UIImageView!
@@ -24,6 +26,8 @@ class ChatDetailViewController: UIViewController {
         avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         mainViewBackground.backgroundColor = UIColor(named: "backgroundLight")
         mainViewBackground.layer.cornerRadius = 25
+        sendMessageButton.roundCorners(corners: [.allCorners], radius: 25)
+        messageTextField.roundCorners(corners: [.topLeft, .topRight], radius: 25)
     }
     
     func setupTableView() {

@@ -11,9 +11,9 @@ import FirebaseFirestore
 class AuthFirebaseManager {
     static let shared = AuthFirebaseManager()
     
-    public func login(email: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
+    func login(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
         Firestore.firestore().collection(FirebaseCollections.users.rawValue)
-            .whereField("email", isEqualTo: email)
+            .whereField("userName", isEqualTo: userName)
             .whereField("password", isEqualTo: password)
             .getDocuments { querySnapshot, error in
                 guard error == nil else { return completion(.failure(error!)) }
@@ -32,6 +32,20 @@ class AuthFirebaseManager {
                 completion(.success(user))
         }
     }
-    
+
+    func signUp(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
+        let user = User(id: UUID().uuidString, name: userName, age: 0, email: "", password: password)
+        
+        FirebaseManager.shared.addDocument(document: user, collection: .users) { result in
+            switch result {
+            case .success(let user):
+                print("Success", user)
+                completion(.success(user))
+            case .failure(let error):
+                completion(.failure(error))
+                print("Error", error)
+            }
+        }
+    }
     
 }

@@ -13,7 +13,9 @@
                 <outlet property="avatarImage" destination="Zc2-g8-dOR" id="fRa-M1-53Y"/>
                 <outlet property="closeButton" destination="7lg-CL-1Ji" id="09M-vQ-Ded"/>
                 <outlet property="mainViewBackground" destination="g8v-2E-yMN" id="CXS-2i-dRx"/>
+                <outlet property="messageTextField" destination="2r1-uV-5yL" id="zR5-VO-ZLg"/>
                 <outlet property="nameLabel" destination="25T-9v-9Xd" id="Nt3-Op-pFi"/>
+                <outlet property="sendMessageButton" destination="p5V-vL-Xzy" id="jdV-xI-zw4"/>
                 <outlet property="tableView" destination="oqz-1r-Qej" id="z6O-ou-GR2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,19 +53,48 @@
                             <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system"/>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oqz-1r-Qej">
-                            <rect key="frame" x="8" y="70" width="382" height="728"/>
+                            <rect key="frame" x="8" y="70" width="382" height="670"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-pU-0Ts">
+                            <rect key="frame" x="8" y="740" width="382" height="50"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2r1-uV-5yL">
+                                    <rect key="frame" x="0.0" y="0.0" width="332" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Od2-h6-Sg4"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5V-vL-Xzy">
+                                    <rect key="frame" x="332" y="0.0" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="c9o-Ra-kRa"/>
+                                        <constraint firstAttribute="height" constant="50" id="p0V-gY-JuD"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" image="pencil.and.ellipsis.rectangle" catalog="system"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="p5V-vL-Xzy" secondAttribute="bottom" id="GKC-Ju-zDS"/>
+                                <constraint firstAttribute="trailing" secondItem="p5V-vL-Xzy" secondAttribute="trailing" id="lv5-Zw-92j"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="dZZ-pU-0Ts" firstAttribute="leading" secondItem="g8v-2E-yMN" secondAttribute="leading" constant="8" id="057-rU-DYv"/>
                         <constraint firstAttribute="trailing" secondItem="7lg-CL-1Ji" secondAttribute="trailing" constant="25" id="3aF-CY-6NP"/>
                         <constraint firstItem="oqz-1r-Qej" firstAttribute="leading" secondItem="g8v-2E-yMN" secondAttribute="leading" constant="8" id="5cA-iL-REk"/>
                         <constraint firstItem="z62-Js-UnQ" firstAttribute="leading" secondItem="g8v-2E-yMN" secondAttribute="leading" constant="15" id="PT0-BH-as5"/>
+                        <constraint firstItem="2r1-uV-5yL" firstAttribute="top" secondItem="oqz-1r-Qej" secondAttribute="bottom" id="TaP-MS-3QJ"/>
                         <constraint firstItem="z62-Js-UnQ" firstAttribute="top" secondItem="g8v-2E-yMN" secondAttribute="top" constant="20" id="VpQ-f8-n1l"/>
                         <constraint firstItem="7lg-CL-1Ji" firstAttribute="top" secondItem="g8v-2E-yMN" secondAttribute="top" constant="28" id="ae3-7n-Y5c"/>
+                        <constraint firstAttribute="bottom" secondItem="dZZ-pU-0Ts" secondAttribute="bottom" constant="8" id="fb7-uC-ONz"/>
+                        <constraint firstAttribute="trailing" secondItem="dZZ-pU-0Ts" secondAttribute="trailing" constant="8" id="ifZ-mQ-avE"/>
                         <constraint firstAttribute="trailing" secondItem="oqz-1r-Qej" secondAttribute="trailing" constant="8" id="jHF-Er-gDi"/>
-                        <constraint firstAttribute="bottom" secondItem="oqz-1r-Qej" secondAttribute="bottom" id="oJA-Gt-g53"/>
                         <constraint firstItem="oqz-1r-Qej" firstAttribute="top" secondItem="z62-Js-UnQ" secondAttribute="bottom" id="vHq-Jc-L9V"/>
                     </constraints>
                 </view>
@@ -81,6 +112,7 @@
     </objects>
     <resources>
         <image name="avatar" width="100" height="100"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="128" height="81"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

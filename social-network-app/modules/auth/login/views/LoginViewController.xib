@@ -39,8 +39,8 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="zMR-Bp-5vf"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" textContentType="username"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmD-tA-s8I">
                                     <rect key="frame" x="0.0" y="100" width="258" height="50"/>
@@ -53,8 +53,8 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="ii4-fy-BC2"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                 </textField>
                             </subviews>
                         </stackView>
@@ -65,6 +65,9 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                            <connections>
+                                <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="eso-vI-40b"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.86083280125177031" green="0.93639653515567534" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

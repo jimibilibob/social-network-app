@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class PostTableViewModel {
     let firebaseManager = FirebaseManager.shared
+    let fireStoreManager = FirebaseStorageManager.shared
+    let storageRoute = "posts"
+    var reloadTable: (() -> Void)?
 
     var posts = [Post]()
     
@@ -18,6 +22,17 @@ class PostTableViewModel {
         }
     }
     
+    func getAllPosts() {
+        firebaseManager.getDocuments(type: Post.self, forCollection: .posts) { result in
+            switch result {
+            case .success(let posts):
+                self.posts = posts
+                self.reloadTable?()
+            case .failure(let error):
+                print("ERROR POSTS FETCH", error)
+            }
+        }
+    }
     
     func listenUserChanges(result: Result<[Post], Error>) {
         switch result {
@@ -30,18 +45,23 @@ class PostTableViewModel {
     
 
     
-    func addPost(post: Post) {
-        
-        firebaseManager.addDocument(document: post, collection: .posts) { result in
+    func addNewPost(post: Post, completion: @escaping (Result<Post, Error>) -> Void) {
+        self.firebaseManager.addDocument(document: post, collection: .posts, completion: { result in
             switch result {
             case .success(let post):
-                print("Success", post)
+                completion(.success(post))
             case .failure(let error):
-                print("Error", error)
+                completion(.failure(error))
+                print("Error Add Post \(error)")
             }
-        }
+        })
     }
 
+    func uploadPostFile(file: UIImage, completion: @escaping (URL) -> Void) {
+        fireStoreManager.uploadPhoto(file: file, route: storageRoute) { fileUrl in
+            completion(fileUrl)
+        }
+    }
     
     
     func editUser(post: Post) {

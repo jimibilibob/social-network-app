@@ -10,4 +10,7 @@ import Foundation
 struct Post: Codable, BaseModel {
     var id: String
     let photo: String
+    let ownerId: String
+    let updatedAt: Date
+    let createdAt: Date
 }
