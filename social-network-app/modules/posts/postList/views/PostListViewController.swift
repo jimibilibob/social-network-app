@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PostListViewController: ImagePickerViewController {
 
@@ -53,19 +54,27 @@ class PostListViewController: ImagePickerViewController {
     }
     
     override func setImage(data: Data) {
-        guard let image = UIImage(data: data) else { return }
-        viewModel.uploadPostFile(file: image) { image in
-            let newPost = Post(id: UUID().uuidString, photo: image.absoluteString, ownerId: UUID().uuidString, updatedAt: Date(), createdAt: Date())
-            self.viewModel.addNewPost(post: newPost) { result in
-                switch result {
-                case .success(let post):
-                    print("NEW POST AVIABLE", post)
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print("ERROR WHILE ADDING A NEW POST", error)
+        let vc = PostDetailViewController()
+        vc.post = Post(id: "", photo: "", description: "Post Description", ownerId: "", updatedAt: Date(), createdAt: Date())
+        vc.checkMarkAction = {
+            SVProgressHUD.show()
+            guard let image = UIImage(data: data) else { return }
+            self.viewModel.uploadPostFile(file: image) { image in
+                let newPost = Post(id: UUID().uuidString, photo: image.absoluteString, description: "Post Description", ownerId: UUID().uuidString, updatedAt: Date(), createdAt: Date())
+                self.viewModel.addNewPost(post: newPost) { result in
+                    switch result {
+                    case .success(let post):
+                        print("NEW POST AVIABLE", post)
+                        self.tableView.reloadData()
+                        self.navigationController?.popToRootViewController(animated: true)
+                    case .failure(let error):
+                        print("ERROR WHILE ADDING A NEW POST", error)
+                    }
+                    SVProgressHUD.dismiss()
                 }
             }
         }
+        show(vc, sender: nil)
     }
 
 }

@@ -34,7 +34,7 @@ class AuthFirebaseManager {
     }
 
     func signUp(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
-        let user = User(id: UUID().uuidString, name: userName, age: 0, email: "", password: password)
+        let user = User(id: UUID().uuidString, name: userName, age: 0, email: "", password: password, updatedAt: Date(), createdAt: Date())
         
         FirebaseManager.shared.addDocument(document: user, collection: .users) { result in
             switch result {

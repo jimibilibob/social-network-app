@@ -41,15 +41,16 @@ class FirebaseStorageManager {
             })
         }
     }
-    
-    func deleteFile(fileName: String) {
+
+    func deleteFile(fileName: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         let desertRef = Storage.storage().reference(withPath: "photos/").child(fileName)
         desertRef.delete { error in
-          if let error = error {
-            
-          } else {
-            
-          }
+            if error != nil {
+              completion(.failure(error!))
+              return
+            }
+            completion(.success(true))
+            return
         }
     }
 }

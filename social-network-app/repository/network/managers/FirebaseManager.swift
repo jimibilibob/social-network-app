@@ -28,7 +28,7 @@ class FirebaseManager {
     }
     
     func getDocuments<T: Decodable>(type: T.Type, forCollection collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
-        db.collection(collection.rawValue).getDocuments { querySnapshot, error in
+        db.collection(collection.rawValue).order(by: "createdAt", descending: true).getDocuments { querySnapshot, error in
             guard error == nil else { return completion(.failure(error!)) }
             guard let documents = querySnapshot?.documents else { return completion(.success([])) }
             

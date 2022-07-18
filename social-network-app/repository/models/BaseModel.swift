@@ -9,4 +9,6 @@ import Foundation
 
 protocol BaseModel {
     var id: String { get set }
+    var updatedAt: Date { get set }
+    var createdAt: Date { get set }
 }
