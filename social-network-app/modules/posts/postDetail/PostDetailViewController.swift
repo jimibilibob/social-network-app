@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PostDetailViewController: UIViewController {
     
@@ -35,17 +36,20 @@ class PostDetailViewController: UIViewController {
         avatarImage.roundCorners(corners: [.allCorners], radius: 25)
         
         // Initialize with post values
-        if let url = URL(string: post?.photo ?? "") {
-            ImageManager.shared.loadImage(from: url) { result in
-                switch result {
-                case .success(let uiImage):
-                    self.postImage.image  = uiImage
-                case .failure(let error):
-                    print("Error while getting post image", error)
-                }
-            }
-        }
-        postImage.image = UIImage(data: dataImage ?? Data())
+        let url = URL(string: post?.photo ?? "")
+        let processor = DownsamplingImageProcessor(size: postImage.bounds.size)
+                     |> RoundCornerImageProcessor(cornerRadius: 25)
+        postImage.kf.indicatorType = .activity
+        postImage.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ]
+        )
         postImage.contentMode = .scaleToFill
         postImage.layer.cornerRadius = 25
         postDescriptionTextField.text = post?.description

@@ -23,6 +23,7 @@
 		CE38AEA82881038A00B3128D /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38AEA72881038A00B3128D /* FireStoreManager.swift */; };
 		CE554E04287291CB0097CC26 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE554E02287291CA0097CC26 /* LoginViewController.swift */; };
 		CE554E05287291CB0097CC26 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE554E03287291CA0097CC26 /* LoginViewController.xib */; };
+		CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79F73A28875ACD00A42B4E /* Reaction.swift */; };
 		CE8E899B287521AB004863A3 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E8999287521AB004863A3 /* PostListViewController.swift */; };
 		CE8E899C287521AB004863A3 /* PostListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E899A287521AB004863A3 /* PostListViewController.xib */; };
 		CE8E89A628768FCE004863A3 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E89A428768FCE004863A3 /* PostTableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		CE38AEA72881038A00B3128D /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		CE554E02287291CA0097CC26 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE554E03287291CA0097CC26 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CE79F73A28875ACD00A42B4E /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		CE8E8999287521AB004863A3 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		CE8E899A287521AB004863A3 /* PostListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewController.xib; sourceTree = "<group>"; };
 		CE8E89A428768FCE004863A3 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				CEC2BBD5286C8CE10093E307 /* BaseModel.swift */,
 				CED741A4287D2A0D000C2AB5 /* Post.swift */,
 				CED741AC287D2C7F000C2AB5 /* Chat.swift */,
+				CE79F73A28875ACD00A42B4E /* Reaction.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */,
 				CED741A5287D2A0D000C2AB5 /* Post.swift in Sources */,
 				CED74190287B8607000C2AB5 /* UIViewExtension.swift in Sources */,
+				CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */,
 				CEF3F9CB28813996007A642E /* ImageManager.swift in Sources */,
 				CED741A7287D2B52000C2AB5 /* ProfileViewModel.swift in Sources */,
 				CE8E89CC2877BBB0004863A3 /* FriendListViewController.swift in Sources */,
