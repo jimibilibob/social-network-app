@@ -16,6 +16,7 @@ class PostTableViewModel {
 
     var posts = [Post]()
     var postData: Data?
+    var selectedPost: Post?
     
     init() {
         firebaseManager.listenCollectionChanges(type: Post.self, collection: .posts) { result in
@@ -76,13 +77,35 @@ class PostTableViewModel {
     }
     
     
-    func removeUser(postId: String) {
+    func removePost(postId: String) {
         firebaseManager.removeDocument(documentID: postId, collection: .posts){ result in
             switch result {
             case .success(let post):
                 print("Success", post)
             case .failure(let error):
                 print("Error", error)
+            }
+        }
+    }
+
+    func addReaction(reaction: Reaction) {
+        self.firebaseManager.addDocument(document: reaction, collection: .reactions, completion: { result in
+            switch result {
+            case .success(let reaction):
+                print("Added reaction \(reaction)")
+            case .failure(let error):
+                print("Error while add reaction \(error)")
+            }
+        })
+    }
+
+    func removeReaction(reactionId: String) {
+        firebaseManager.removeDocument(documentID: reactionId, collection: .reactions){ result in
+            switch result {
+            case .success(let reaction):
+                print("Removed reaction \(reaction)")
+            case .failure(let error):
+                print("Error while remove reaction \(error)")
             }
         }
     }

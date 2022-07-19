@@ -7,8 +7,12 @@
 
 import UIKit
 import SVProgressHUD
+import Kingfisher
 
 class PostListViewController: ImagePickerViewController {
+    
+    var hasReacted = false
+    
 
     @IBOutlet var addPostButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -71,20 +75,25 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell ?? PostTableViewCell(style: .subtitle, reuseIdentifier: PostTableViewCell.identifier)
-            
-        //cell.postImage.image = UIImage(named: "post")!.imageResize(sizeChange: CGSize(width: 200, height: 200))
+
         let post = viewModel.posts[indexPath.row]
-        if let url = URL(string: post.photo) {
-            ImageManager.shared.loadImage(from: url) { result in
-                switch result {
-                case .success(let uiImage):
-                    cell.postImage.image = uiImage
-                case .failure(let error):
-                    print("Error while getting post image", error)
-                }
-            }
-        }
+        let url = URL(string: post.photo)
+        let processor = DownsamplingImageProcessor(size: cell.postImage.bounds.size)
+                     |> RoundCornerImageProcessor(cornerRadius: 25)
+        cell.postImage.kf.indicatorType = .activity
+        cell.postImage.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ]
+        )
+        cell.delegate = self
         cell.avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
+        cell.setUpReactionSection(hasReacted: hasReacted)
         return cell
     }
     
@@ -94,7 +103,8 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = PostDetailViewController()
-        vc.post = viewModel.posts[indexPath.row]
+        let post = viewModel.posts[indexPath.row]
+        vc.post = post
         vc.delegate = self
         show(vc, sender: nil)
     }
@@ -128,5 +138,13 @@ extension PostListViewController: PostDetailViewControllerDelegate {
             SVProgressHUD.dismiss()
             self.showToast(message: "Post edited successfully!", seconds: 2)
         }
+    }
+}
+
+extension PostListViewController: PostTableViewCellDelegate {
+    func react(cell: PostTableViewCell) {
+        hasReacted = !hasReacted
+        guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

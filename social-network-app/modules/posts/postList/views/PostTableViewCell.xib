@@ -51,24 +51,52 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeN-kS-GG5">
                                 <rect key="frame" x="8" y="235" width="334" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyr-bw-ITq">
-                                        <rect key="frame" x="15" y="10" width="137" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jyr-bw-ITq">
+                                        <rect key="frame" x="15" y="10" width="156.5" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-44-vVS">
-                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="30"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="message.fill" catalog="system" title="10"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-kH-Y29">
-                                                <rect key="frame" x="68.5" y="0.0" width="68.5" height="30"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system" title="122"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNQ-h3-Ado">
+                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-44-vVS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="message.fill" catalog="system"/>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5i-0S-bf5">
+                                                        <rect key="frame" x="47" y="0.0" width="20.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9c6-QT-4jM">
+                                                <rect key="frame" x="82.5" y="0.0" width="74" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-kH-Y29">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="30"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="reactionAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Ji-Lq-vha"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPE-K6-as0">
+                                                        <rect key="frame" x="45.5" y="0.0" width="28.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="pNQ-h3-Ado" firstAttribute="top" secondItem="jyr-bw-ITq" secondAttribute="top" id="AKk-bs-2lu"/>
                                             <constraint firstAttribute="height" constant="30" id="aQQ-qH-5aJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="pNQ-h3-Ado" secondAttribute="bottom" id="hQE-WB-uQI"/>
+                                            <constraint firstItem="pNQ-h3-Ado" firstAttribute="leading" secondItem="jyr-bw-ITq" secondAttribute="leading" id="s2f-ks-Kyq"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -105,8 +133,12 @@
             <connections>
                 <outlet property="avatarImage" destination="qgT-cM-EKO" id="8fE-9U-P8L"/>
                 <outlet property="bottomView" destination="GeN-kS-GG5" id="OM4-qx-aP0"/>
+                <outlet property="commentButton" destination="PiP-44-vVS" id="oCD-a7-45S"/>
+                <outlet property="commentLabel" destination="n5i-0S-bf5" id="i5O-mk-F0F"/>
                 <outlet property="mainBackground" destination="Kh6-z8-aJG" id="xPo-Ql-y9w"/>
                 <outlet property="postImage" destination="98C-U5-wcA" id="4Ty-ON-evE"/>
+                <outlet property="reactionButton" destination="7hm-kH-Y29" id="g2T-t0-RWs"/>
+                <outlet property="reactionLabel" destination="nPE-K6-as0" id="MDU-rz-Pkz"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="105.80357142857143"/>
         </tableViewCell>
