@@ -55,25 +55,10 @@ class PostListViewController: ImagePickerViewController {
     
     override func setImage(data: Data) {
         let vc = PostDetailViewController()
-        vc.post = Post(id: "", photo: "", description: "Post Description", ownerId: "", updatedAt: Date(), createdAt: Date())
-        vc.checkMarkAction = {
-            SVProgressHUD.show()
-            guard let image = UIImage(data: data) else { return }
-            self.viewModel.uploadPostFile(file: image) { image in
-                let newPost = Post(id: UUID().uuidString, photo: image.absoluteString, description: "Post Description", ownerId: UUID().uuidString, updatedAt: Date(), createdAt: Date())
-                self.viewModel.addNewPost(post: newPost) { result in
-                    switch result {
-                    case .success(let post):
-                        print("NEW POST AVIABLE", post)
-                        self.tableView.reloadData()
-                        self.navigationController?.popToRootViewController(animated: true)
-                    case .failure(let error):
-                        print("ERROR WHILE ADDING A NEW POST", error)
-                    }
-                    SVProgressHUD.dismiss()
-                }
-            }
-        }
+        vc.post = Post(id: UUID().uuidString, photo: "", description: "", ownerId: UUID().uuidString, updatedAt: Date(), createdAt: Date())
+        viewModel.postData = data
+        vc.dataImage = data
+        vc.delegate = self
         show(vc, sender: nil)
     }
 
@@ -107,5 +92,41 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
          return 350
      }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PostDetailViewController()
+        vc.post = viewModel.posts[indexPath.row]
+        vc.delegate = self
+        show(vc, sender: nil)
+    }
 }
 
+extension PostListViewController: PostDetailViewControllerDelegate {
+    func savePost(post: Post) {
+        SVProgressHUD.show()
+        guard let image = UIImage(data: viewModel.postData ?? Data()) else { return }
+        self.viewModel.uploadPostFile(file: image) { image in
+            let newPost = Post(id: post.id, photo: image.absoluteString, description: post.description, ownerId: post.ownerId, updatedAt: post.updatedAt, createdAt: post.createdAt)
+            self.viewModel.addNewPost(post: newPost) { result in
+                switch result {
+                case .success(_):
+                    self.tableView.reloadData()
+                    self.navigationController?.popToRootViewController(animated: true)
+                    self.showToast(message: "New post created!", seconds: 2)
+                case .failure(_):
+                    ErrorAlert.shared.showAlert(title: "Error ", message: "Error while posting, please try again later.", target: self)
+                }
+                SVProgressHUD.dismiss()
+            }
+        }
+    }
+    
+    func updatePost(post: Post) {
+        SVProgressHUD.show()
+        self.viewModel.editPost(post: post) { post in
+            self.tableView.reloadData()
+            self.navigationController?.popToRootViewController(animated: true)
+            SVProgressHUD.dismiss()
+            self.showToast(message: "Post edited successfully!", seconds: 2)
+        }
+    }
+}

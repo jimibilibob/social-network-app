@@ -15,6 +15,7 @@ class PostTableViewModel {
     var reloadTable: (() -> Void)?
 
     var posts = [Post]()
+    var postData: Data?
     
     init() {
         firebaseManager.listenCollectionChanges(type: Post.self, collection: .posts) { result in
@@ -43,7 +44,6 @@ class PostTableViewModel {
         }
     }
     
-
     
     func addNewPost(post: Post, completion: @escaping (Result<Post, Error>) -> Void) {
         self.firebaseManager.addDocument(document: post, collection: .posts, completion: { result in
@@ -64,11 +64,11 @@ class PostTableViewModel {
     }
     
     
-    func editUser(post: Post) {
+    func editPost(post: Post, completion: @escaping (Post) -> Void) {
         firebaseManager.updateDocument(document: post, collection: .posts) { result in
             switch result {
             case .success(let post):
-                print("Success", post)
+                completion(post)
             case .failure(let error):
                 print("Error", error)
             }

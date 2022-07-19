@@ -38,6 +38,9 @@
 		CE8E89CD2877BBB0004863A3 /* FriendListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E89CB2877BBB0004863A3 /* FriendListViewController.xib */; };
 		CEA156662877C16700EDE66D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA156642877C16700EDE66D /* SettingsViewController.swift */; };
 		CEA156672877C16700EDE66D /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA156652877C16700EDE66D /* SettingsViewController.xib */; };
+		CEAEFD7428865D840098CD03 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEFD7228865D840098CD03 /* ErrorAlert.swift */; };
+		CEAEFD7528865D840098CD03 /* ConfirmAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEFD7328865D840098CD03 /* ConfirmAlertViewController.swift */; };
+		CEAEFD7728865F190098CD03 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEFD7628865F190098CD03 /* UIViewControllerExtension.swift */; };
 		CEC2BBD4286C8CC70093E307 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BBD3286C8CC70093E307 /* User.swift */; };
 		CEC2BBD6286C8CE10093E307 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BBD5286C8CE10093E307 /* BaseModel.swift */; };
 		CEC2BBDA286C8D440093E307 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */; };
@@ -120,6 +123,9 @@
 		CE8E89CB2877BBB0004863A3 /* FriendListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListViewController.xib; sourceTree = "<group>"; };
 		CEA156642877C16700EDE66D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CEA156652877C16700EDE66D /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		CEAEFD7228865D840098CD03 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		CEAEFD7328865D840098CD03 /* ConfirmAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmAlertViewController.swift; sourceTree = "<group>"; };
+		CEAEFD7628865F190098CD03 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CEC2BBD3286C8CC70093E307 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CEC2BBD5286C8CE10093E307 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -501,6 +507,15 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
+		CEAEFD7128865D740098CD03 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				CEAEFD7328865D840098CD03 /* ConfirmAlertViewController.swift */,
+				CEAEFD7228865D840098CD03 /* ErrorAlert.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		CEC2BBD1286C8CB80093E307 /* repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +559,7 @@
 		CEC2BBDB286C8E7D0093E307 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CEAEFD7128865D740098CD03 /* views */,
 				CEF3F9C5288125B6007A642E /* helpers */,
 				CEC2BBDC286C8E910093E307 /* extensions */,
 			);
@@ -558,6 +574,7 @@
 				CED7417C287B3683000C2AB5 /* UIColorExtension.swift */,
 				CED7418F287B8607000C2AB5 /* UIViewExtension.swift */,
 				CED74197287BB942000C2AB5 /* StringExtension.swift */,
+				CEAEFD7628865F190098CD03 /* UIViewControllerExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -855,10 +872,12 @@
 				CED741A3287D295A000C2AB5 /* PostTableViewModel.swift in Sources */,
 				CE035A62286C8565006D4288 /* ViewController.swift in Sources */,
 				CE8E89B62877B6C1004863A3 /* UIImageExtension.swift in Sources */,
+				CEAEFD7728865F190098CD03 /* UIViewControllerExtension.swift in Sources */,
 				CED74188287B7E77000C2AB5 /* SentMessagesTableViewCell.swift in Sources */,
 				CEA156662877C16700EDE66D /* SettingsViewController.swift in Sources */,
 				CE8E89B32877B130004863A3 /* ChatListViewController.swift in Sources */,
 				CED7419F287BC5B2000C2AB5 /* ProfileViewController.swift in Sources */,
+				CEAEFD7528865D840098CD03 /* ConfirmAlertViewController.swift in Sources */,
 				CE0D15A1286F754A00B3510C /* NetworkManager.swift in Sources */,
 				CEC2BBDA286C8D440093E307 /* FirebaseManager.swift in Sources */,
 				CE035A5E286C8565006D4288 /* AppDelegate.swift in Sources */,
@@ -867,6 +886,7 @@
 				CEF3F9C8288125F7007A642E /* DeviceImageLibraryViewController.swift in Sources */,
 				CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */,
 				CED7418D287B7E9D000C2AB5 /* RecievedMessageTableViewCell.swift in Sources */,
+				CEAEFD7428865D840098CD03 /* ErrorAlert.swift in Sources */,
 				CED74184287B6211000C2AB5 /* ChatDetailViewController.swift in Sources */,
 				CE8E89A628768FCE004863A3 /* PostTableViewCell.swift in Sources */,
 				CEF3F9C9288125F7007A642E /* ImagePickerViewController.swift in Sources */,
