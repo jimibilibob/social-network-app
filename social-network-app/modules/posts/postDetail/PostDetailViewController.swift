@@ -12,7 +12,7 @@ class PostDetailViewController: UIViewController {
     
     var post: Post?
     var dataImage: Data?
-    var delegate: PostDetailViewControllerDelegate?
+    weak var delegate: PostDetailViewControllerDelegate?
 
     @IBOutlet var postDescriptionTextField: UITextField!
     @IBOutlet var postImage: UIImageView!
@@ -50,6 +50,9 @@ class PostDetailViewController: UIViewController {
                 .cacheOriginalImage
             ]
         )
+        if let dataImage = dataImage {
+            postImage.image = UIImage(data: dataImage )
+        }
         postImage.contentMode = .scaleToFill
         postImage.layer.cornerRadius = 25
         postDescriptionTextField.text = post?.description

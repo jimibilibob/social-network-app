@@ -19,7 +19,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     static let identifier = "PostTableViewCell"
 
-    var delegate: PostTableViewCellDelegate?
+    weak var delegate: PostTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,9 +42,10 @@ class PostTableViewCell: UITableViewCell {
         postImage.layer.cornerRadius = 25
     }
 
-    func setUpReactionSection(hasReacted: Bool) {
+    func setUpReactionSection(hasReacted: Bool, reactionsCounter: Int) {
         reactionButton.tintColor = hasReacted ? .red : .white
         reactionLabel.textColor = hasReacted ? .red : .white
+        reactionLabel.text = "\(reactionsCounter)"
     }
     
     override func layoutSubviews() {

@@ -23,6 +23,7 @@
 		CE38AEA82881038A00B3128D /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38AEA72881038A00B3128D /* FireStoreManager.swift */; };
 		CE554E04287291CB0097CC26 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE554E02287291CA0097CC26 /* LoginViewController.swift */; };
 		CE554E05287291CB0097CC26 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE554E03287291CA0097CC26 /* LoginViewController.xib */; };
+		CE72B1472888E50B00075C01 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B1462888E50B00075C01 /* DefaultsManager.swift */; };
 		CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79F73A28875ACD00A42B4E /* Reaction.swift */; };
 		CE8E899B287521AB004863A3 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E8999287521AB004863A3 /* PostListViewController.swift */; };
 		CE8E899C287521AB004863A3 /* PostListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E899A287521AB004863A3 /* PostListViewController.xib */; };
@@ -109,6 +110,7 @@
 		CE38AEA72881038A00B3128D /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		CE554E02287291CA0097CC26 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE554E03287291CA0097CC26 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CE72B1462888E50B00075C01 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		CE79F73A28875ACD00A42B4E /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		CE8E8999287521AB004863A3 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		CE8E899A287521AB004863A3 /* PostListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewController.xib; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				CEF3F9CA28813996007A642E /* ImageManager.swift */,
 				CE0D159E286F752100B3510C /* CoreDataManager.swift */,
+				CE72B1462888E50B00075C01 /* DefaultsManager.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				CEF3F9C8288125F7007A642E /* DeviceImageLibraryViewController.swift in Sources */,
 				CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */,
 				CED7418D287B7E9D000C2AB5 /* RecievedMessageTableViewCell.swift in Sources */,
+				CE72B1472888E50B00075C01 /* DefaultsManager.swift in Sources */,
 				CEAEFD7428865D840098CD03 /* ErrorAlert.swift in Sources */,
 				CED74184287B6211000C2AB5 /* ChatDetailViewController.swift in Sources */,
 				CE8E89A628768FCE004863A3 /* PostTableViewCell.swift in Sources */,

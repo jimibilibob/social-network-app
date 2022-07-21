@@ -12,6 +12,7 @@ import FirebaseFirestore
 enum FirebaseErrors: Error {
     case ErrorToDecodeItem
     case InvalidUser
+    case InvalidQueries
 }
 
 enum FirebaseCollections: String {
@@ -44,6 +45,70 @@ class FirebaseManager {
             completion(.success(items))
         }
 
+    }
+
+    func getDocuments<T: Decodable>(by parameters: [String: Any], type: T.Type, forCollection collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        let queries = getQuery(from: parameters, forCollection: collection)
+        guard let q = queries else { return completion(.failure(FirebaseErrors.InvalidQueries)) }
+        q.order(by: "createdAt", descending: true).getDocuments { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+
+    }
+
+    func getDocuments<T: Decodable>(whereIn: [String: [Any]], type: T.Type, forCollection collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        var q: Query = db.collection(collection.rawValue)
+        if !whereIn.isEmpty {
+            for (_, p) in whereIn.enumerated() {
+                q = q.whereField(p.key, in: p.value)
+            }
+        }
+        q.order(by: "createdAt", descending: true).getDocuments { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+
+    }
+
+    private func getQuery(from parameters: [String: Any], forCollection collection: FirebaseCollections) -> Query? {
+        var q: Query?
+        
+        for (n, p) in parameters.enumerated() {
+            if n == 0 {
+                /* This is the first iteration of the loop
+                 and so this is where we initialize the
+                 query object using the first parameter. */
+                q = db.collection(collection.rawValue).whereField(p.key, isEqualTo: p.value)
+            } else {
+                /* This is an additional iteration of the loop
+                 and so this is where we append the existing
+                 query object with the additional parameter. */
+                q = q?.whereField(p.key, isEqualTo: p.value)
+            }
+        }
+        
+        return q
     }
     
     func listenCollectionChanges<T: Decodable>(type: T.Type, collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
