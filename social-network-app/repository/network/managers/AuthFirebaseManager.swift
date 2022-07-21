@@ -13,7 +13,7 @@ class AuthFirebaseManager {
     
     func login(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
         Firestore.firestore().collection(FirebaseCollections.users.rawValue)
-            .whereField("userName", isEqualTo: userName)
+            .whereField("name", isEqualTo: userName)
             .whereField("password", isEqualTo: password)
             .getDocuments { querySnapshot, error in
                 guard error == nil else { return completion(.failure(error!)) }

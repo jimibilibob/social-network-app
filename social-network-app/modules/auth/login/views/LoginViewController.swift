@@ -22,13 +22,15 @@ class LoginViewController: UIViewController {
     @IBAction func loginAction(_ sender: Any) {
         guard let userName = usernameTextField.text,
               let password = passwordTextField.text else { return }
-        AuthFirebaseManager.shared.signUp(userName: userName, password: password, completion: { result in
+        AuthFirebaseManager.shared.login(userName: userName, password: password, completion: { result in
             switch result {
             case .success(let user):
                 let homeController = SceneDelegate.shared?.getRootViewControllerForValidUser()
                 print("Success login \(user)")
-                if let hc = homeController {
-                    self.show(hc, sender: nil)
+                DefaultsManager.shared.storeUserId(value: user.id) {
+                    if let hc = homeController {
+                        self.show(hc, sender: nil)
+                    }
                 }
             case .failure(let error):
                 print("Error while login \(error)")
