@@ -128,7 +128,30 @@ class FirebaseManager {
             completion(.success(items))
         }
     }
-    
+
+    func listenCollectionChanges<T: Decodable>(whereIn: [String: [Any]], type: T.Type, collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        var q: Query = db.collection(collection.rawValue)
+        if !whereIn.isEmpty {
+            for (_, p) in whereIn.enumerated() {
+                q = q.whereField(p.key, in: p.value)
+            }
+        }
+        q.order(by: "createdAt", descending: true).addSnapshotListener { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+    }
     
     func addDocument<T: Encodable & BaseModel>(document: T, collection: FirebaseCollections, completion: @escaping ( Result<T, Error>) -> Void  ) {
         guard let itemDict = document.dict else { return completion(.failure(FirebaseErrors.ErrorToDecodeItem)) }

@@ -20,6 +20,10 @@ class SignUpViewController: UIViewController {
         setupViews()
     }
 
+    @IBAction func loginAction(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+
     @IBAction func signUpAction(_ sender: Any) {
         guard let userName = usernameTextField.text,
               let password = passwordTextField.text else { return }

@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  LoginViewController.swift
 //  social-network-app
 //
 //  Created by user on 3/7/22.
@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+    }
+
+    @IBAction func registerAction(_ sender: Any) {
+        let vc = SignUpViewController()
+        show(vc, sender: nil)
     }
 
     @IBAction func loginAction(_ sender: Any) {

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="social_network_app" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
                 <outlet property="formView" destination="fXl-Kp-BVz" id="ybV-64-Htf"/>
                 <outlet property="loginButton" destination="Oor-wR-Qty" id="ekC-3n-377"/>
@@ -71,6 +71,9 @@
                                     <rect key="frame" x="179" y="0.0" width="77.5" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Register"/>
+                                    <connections>
+                                        <action selector="registerAction:" destination="-1" eventType="touchUpInside" id="t7n-Yq-Jyi"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>

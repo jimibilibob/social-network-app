@@ -20,9 +20,13 @@ class PostTableViewModel {
     var reactions = [Reaction]()
     
     init() {
-        firebaseManager.listenCollectionChanges(type: Post.self, collection: .posts) { result in
-            self.listenPostChanges(result: result)
+        self.listenPostChanges { posts in
+            self.posts = posts
+            self.listenReactionsChanges(posts: posts) { reactions in
+                self.reactions = reactions
+            }
         }
+        
     }
     
     func getAllPosts(completion: @escaping ( Result<[Post], Error>) -> Void) {
@@ -48,6 +52,7 @@ class PostTableViewModel {
     }
 
     func getAllReactions(posts: [Post], completion: @escaping ( Result<[Reaction], Error>) -> Void) {
+        guard !posts.isEmpty else { return completion(.success([])) }
         let postsIds = posts.map({ $0.id })
         firebaseManager.getDocuments(whereIn: ["postId": postsIds], type: Reaction.self, forCollection: .reactions) { result in
             switch result {
@@ -59,15 +64,29 @@ class PostTableViewModel {
         }
     }
     
-    func listenPostChanges(result: Result<[Post], Error>) {
-        switch result {
-        case .success(let posts):
-            self.posts = posts
-        case .failure(let error):
-            print("Error", error)
+    func listenPostChanges(completion: @escaping ([Post]) -> Void) {
+        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUserId()]], type: Post.self, collection: .posts) { result in
+            switch result {
+            case .success(let posts):
+                completion(posts)
+            case .failure(let error):
+                print("Error on listening posts \(error)")
+            }
         }
     }
-    
+
+    func listenReactionsChanges(posts: [Post], completion: @escaping ([Reaction]) -> Void) {
+        guard !posts.isEmpty else { return completion([]) }
+        let postsIds = posts.map({ $0.id })
+        firebaseManager.listenCollectionChanges(whereIn: ["postId": postsIds], type: Reaction.self, collection: .reactions) { result in
+            switch result {
+            case .success(let reactions):
+                completion(reactions)
+            case .failure(let error):
+                print("Error on listening posts \(error)")
+            }
+        }
+    }
     
     func addNewPost(post: Post, completion: @escaping (Result<Post, Error>) -> Void) {
         self.firebaseManager.addDocument(document: post, collection: .posts, completion: { result in
