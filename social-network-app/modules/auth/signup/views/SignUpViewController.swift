@@ -32,10 +32,9 @@ class SignUpViewController: UIViewController {
             case .success(let user):
                 let homeController = SceneDelegate.shared?.getRootViewControllerForValidUser()
                 print("Success login \(user)")
-                DefaultsManager.shared.storeUserId(value: user.id) {
-                    if let hc = homeController {
-                        self.show(hc, sender: nil)
-                    }
+                DefaultsManager.shared.storeUser(user: user)
+                if let hc = homeController {
+                    self.show(hc, sender: nil)
                 }
             case .failure(let error):
                 print("Error while login \(error)")

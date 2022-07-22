@@ -40,7 +40,8 @@ class PostTableViewModel {
         }
     }
 
-    func getAllPosts(by userId: String, completion: @escaping ( Result<[Post], Error>) -> Void) {
+    func getAllPosts(by userId: String?, completion: @escaping ( Result<[Post], Error>) -> Void) {
+        guard let userId = userId else { return }
         firebaseManager.getDocuments(by: ["ownerId": userId], type: Post.self, forCollection: .posts) { result in
             switch result {
             case .success(let posts):
@@ -65,7 +66,7 @@ class PostTableViewModel {
     }
     
     func listenPostChanges(completion: @escaping ([Post]) -> Void) {
-        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUserId()]], type: Post.self, collection: .posts) { result in
+        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUser()?.id ?? ""]], type: Post.self, collection: .posts) { result in
             switch result {
             case .success(let posts):
                 completion(posts)

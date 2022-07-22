@@ -12,6 +12,7 @@ struct User: Codable, BaseModel {
     let name: String
     let age: Int
     let email: String
+    let avatar: String
     let password: String
     var updatedAt: Date
     var createdAt: Date

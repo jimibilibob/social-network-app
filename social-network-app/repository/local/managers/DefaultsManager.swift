@@ -10,15 +10,29 @@ import Foundation
 class DefaultsManager {
     static let shared = DefaultsManager()
     private let defaults = UserDefaults.standard
-    private let userIdKey = "userIdKey"
+    private let userKey = "userKey"
     
-    func storeUserId(value: String, completion: @escaping () -> Void) {
-        defaults.set(value, forKey: userIdKey)
-        completion()
+    func storeUser(user: User) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(user)
+            defaults.set(data, forKey: userKey)
+        } catch {
+            print("Unable to Encode User \(user)")
+        }
     }
 
-    func readUserId() -> String {
-        return defaults.string(forKey: userIdKey) ?? ""
+    func readUser() -> User? {
+        if let data = defaults.data(forKey: userKey) {
+            do {
+                let decoder = JSONDecoder()
+                let user = try decoder.decode(User.self, from: data)
+                return user
+            } catch {
+                return nil
+            }
+        }
+        return nil
     }
 }
 

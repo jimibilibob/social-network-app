@@ -53,11 +53,27 @@ class PostDetailViewController: UIViewController {
         if let dataImage = dataImage {
             postImage.image = UIImage(data: dataImage )
         }
+        
+        // Avatar Image
+        let imageProcessor = DownsamplingImageProcessor(size: avatarImage.bounds.size)
+                     |> RoundCornerImageProcessor(cornerRadius: 25)
+        avatarImage.kf.indicatorType = .activity
+        avatarImage.kf.setImage(
+            with: URL(string: DefaultsManager.shared.readUser()?.avatar ?? ""),
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                .processor(imageProcessor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ]
+        )
+        nameLabel.text = DefaultsManager.shared.readUser()?.name ?? ""
         postImage.contentMode = .scaleToFill
         postImage.layer.cornerRadius = 25
         postDescriptionTextField.text = post?.description
 
-        avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
+        //avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         nameLabel.text = "Saih Nahni"
         /*avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         nameLabel.text = "Saih Nahni"*/
