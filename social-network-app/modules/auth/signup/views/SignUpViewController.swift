@@ -2,27 +2,28 @@
 //  SignUpViewController.swift
 //  social-network-app
 //
-//  Created by user on 3/7/22.
+//  Created by user on 21/7/22.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var formView: UIView!
+    @IBOutlet var formView: UIView!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var signupButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
     }
 
-    @IBAction func loginAction(_ sender: Any) {
+    @IBAction func signUpAction(_ sender: Any) {
         guard let userName = usernameTextField.text,
               let password = passwordTextField.text else { return }
-        AuthFirebaseManager.shared.login(userName: userName, password: password, completion: { result in
+        AuthFirebaseManager.shared.signUp(userName: userName, password: password, completion: { result in
             switch result {
             case .success(let user):
                 let homeController = SceneDelegate.shared?.getRootViewControllerForValidUser()
@@ -45,8 +46,8 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 15
         passwordTextField.clipsToBounds = true
         passwordTextField.isSecureTextEntry = true
-        loginButton.layer.cornerRadius = 15
-        loginButton.clipsToBounds = true
+        signupButton.layer.cornerRadius = 15
+        signupButton.clipsToBounds = true
         navigationController?.isNavigationBarHidden = true
     }
 }

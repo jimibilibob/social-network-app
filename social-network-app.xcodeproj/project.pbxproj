@@ -47,6 +47,8 @@
 		CEC2BBD6286C8CE10093E307 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BBD5286C8CE10093E307 /* BaseModel.swift */; };
 		CEC2BBDA286C8D440093E307 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */; };
 		CEC2BBDE286C8EB10093E307 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BBDD286C8EB10093E307 /* EncodableExtension.swift */; };
+		CEC2D20F288A1FCE00343AAB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2D20E288A1FCE00343AAB /* SignUpViewController.swift */; };
+		CEC2D211288A200300343AAB /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC2D210288A200300343AAB /* SignUpViewController.xib */; };
 		CED7417D287B3683000C2AB5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7417C287B3683000C2AB5 /* UIColorExtension.swift */; };
 		CED74184287B6211000C2AB5 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED74182287B6211000C2AB5 /* ChatDetailViewController.swift */; };
 		CED74185287B6211000C2AB5 /* ChatDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED74183287B6211000C2AB5 /* ChatDetailViewController.xib */; };
@@ -134,6 +136,8 @@
 		CEC2BBD5286C8CE10093E307 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		CEC2BBD9286C8D440093E307 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		CEC2BBDD286C8EB10093E307 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		CEC2D20E288A1FCE00343AAB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CEC2D210288A200300343AAB /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		CED7417C287B3683000C2AB5 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CED74182287B6211000C2AB5 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		CED74183287B6211000C2AB5 /* ChatDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDetailViewController.xib; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 		CE0D15AA286F765D00B3510C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				CEC2D210288A200300343AAB /* SignUpViewController.xib */,
+				CEC2D20E288A1FCE00343AAB /* SignUpViewController.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -780,6 +786,7 @@
 				CED7418E287B7E9D000C2AB5 /* RecievedMessageTableViewCell.xib in Resources */,
 				CE8E899C287521AB004863A3 /* PostListViewController.xib in Resources */,
 				CE8E89B02877B10E004863A3 /* ChatTableViewCell.xib in Resources */,
+				CEC2D211288A200300343AAB /* SignUpViewController.xib in Resources */,
 				CE554E05287291CB0097CC26 /* LoginViewController.xib in Resources */,
 				CE035A6D286C8566006D4288 /* LaunchScreen.storyboard in Resources */,
 				CE035A91286C865E006D4288 /* GoogleService-Info.plist in Resources */,
@@ -896,6 +903,7 @@
 				CEAEFD7428865D840098CD03 /* ErrorAlert.swift in Sources */,
 				CED74184287B6211000C2AB5 /* ChatDetailViewController.swift in Sources */,
 				CE8E89A628768FCE004863A3 /* PostTableViewCell.swift in Sources */,
+				CEC2D20F288A1FCE00343AAB /* SignUpViewController.swift in Sources */,
 				CEF3F9C9288125F7007A642E /* ImagePickerViewController.swift in Sources */,
 				CE554E04287291CB0097CC26 /* LoginViewController.swift in Sources */,
 				CED741A9287D2C25000C2AB5 /* SettingsViewModel.swift in Sources */,

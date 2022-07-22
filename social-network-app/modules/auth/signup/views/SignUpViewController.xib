@@ -10,10 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
-                <outlet property="formView" destination="fXl-Kp-BVz" id="ybV-64-Htf"/>
+                <outlet property="formView" destination="fXl-Kp-BVz" id="lN6-oz-hdJ"/>
                 <outlet property="loginButton" destination="Oor-wR-Qty" id="ekC-3n-377"/>
-                <outlet property="passwordTextField" destination="Lvz-dw-Nkq" id="mhy-Vo-x1D"/>
-                <outlet property="usernameTextField" destination="Nbl-jM-bQc" id="Zoz-AW-JxL"/>
+                <outlet property="passwordTextField" destination="Lvz-dw-Nkq" id="DsO-CR-h8T"/>
+                <outlet property="signupButton" destination="Oor-wR-Qty" id="mAT-SC-FxL"/>
+                <outlet property="usernameTextField" destination="Nbl-jM-bQc" id="xKy-rl-wht"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -64,7 +65,10 @@
                                 <constraint firstAttribute="height" constant="50" id="sMb-ZP-fkF"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Signup"/>
+                            <connections>
+                                <action selector="signUpAction:" destination="-1" eventType="touchUpInside" id="T1u-xF-hzH"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.86083280125177031" green="0.93639653515567534" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
