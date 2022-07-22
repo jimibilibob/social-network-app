@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 class AuthFirebaseManager {
     static let shared = AuthFirebaseManager()
+    private let defaultAvatar = "https://firebasestorage.googleapis.com/v0/b/social-network-e2f76.appspot.com/o/avatars%2Favatar.png?alt=media&token=3a08931b-376a-47b1-b576-d72a95ee91fa"
     
     func login(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
         Firestore.firestore().collection(FirebaseCollections.users.rawValue)
@@ -34,7 +35,7 @@ class AuthFirebaseManager {
     }
 
     func signUp(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
-        let user = User(id: UUID().uuidString, name: userName, age: 0, email: "", password: password, updatedAt: Date(), createdAt: Date())
+        let user = User(id: UUID().uuidString, name: userName, age: 0, email: "", avatar: defaultAvatar, password: password, updatedAt: Date(), createdAt: Date())
         
         FirebaseManager.shared.addDocument(document: user, collection: .users) { result in
             switch result {

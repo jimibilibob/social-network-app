@@ -136,9 +136,11 @@
                 <outlet property="commentButton" destination="PiP-44-vVS" id="oCD-a7-45S"/>
                 <outlet property="commentLabel" destination="n5i-0S-bf5" id="i5O-mk-F0F"/>
                 <outlet property="mainBackground" destination="Kh6-z8-aJG" id="xPo-Ql-y9w"/>
+                <outlet property="nameLabel" destination="BlF-9W-9ad" id="l7j-Ws-sWN"/>
                 <outlet property="postImage" destination="98C-U5-wcA" id="4Ty-ON-evE"/>
                 <outlet property="reactionButton" destination="7hm-kH-Y29" id="g2T-t0-RWs"/>
                 <outlet property="reactionLabel" destination="nPE-K6-as0" id="MDU-rz-Pkz"/>
+                <outlet property="userNameLabel" destination="KtJ-QM-eXz" id="8me-6h-2Rc"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="105.80357142857143"/>
         </tableViewCell>

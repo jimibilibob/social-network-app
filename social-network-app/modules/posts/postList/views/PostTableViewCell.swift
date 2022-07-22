@@ -9,6 +9,8 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    @IBOutlet var userNameLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var commentButton: UIButton!
     @IBOutlet var reactionLabel: UILabel!

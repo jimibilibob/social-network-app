@@ -19,7 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
 
         Self.shared = self
-        let isValidUser = !DefaultsManager.shared.readUserId().isEmpty
+        var isValidUser = false
+        if let isUser = DefaultsManager.shared.readUser() {
+            isValidUser = !isUser.id.isEmpty
+        }
         setupRootControllerIfNeeded(validUser: isValidUser)
         guard let _ = (scene as? UIWindowScene) else { return }
     }
