@@ -7,7 +7,6 @@ target 'social-network-app' do
 
   # Pods for social-network-app
   pod 'SVProgressHUD'
-  pod 'MessageKit'
   pod 'Kingfisher', '~> 7.0'
 
   target 'social-network-appTests' do

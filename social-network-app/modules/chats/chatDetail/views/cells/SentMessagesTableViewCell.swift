@@ -35,7 +35,11 @@ class SentMessagesTableViewCell: UITableViewCell {
         // TODO: pass a object containing the text message
         //let textwidth = messageButton.titleLabel?.text?.sizeOfString(font: font)
         let textwidth = "Sap Brow how u doing?".sizeOfString(font: font)
-        messageButton.frame = CGRect(x: 0.0, y: 0.0, width: textwidth.width + 20, height: 40)
+        /*NSLayoutConstraint.activate([
+            contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
+            contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
+            contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40)
+        ])*/
         messageButton.backgroundColor = .white
         messageButton.roundCorners(corners: [.topLeft, .topRight, .bottomRight], radius: 25)
     }

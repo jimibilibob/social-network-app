@@ -48,16 +48,16 @@ extension ChatDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SentMessagesTableViewCell.identifier, for: indexPath) as? SentMessagesTableViewCell ?? SentMessagesTableViewCell(style: .default, reuseIdentifier: SentMessagesTableViewCell.identifier)
-            cell.messageButton.setTitle("Sap Brow how u doing?", for: .normal)
+            cell.messageButton.setTitle("Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?", for: .normal)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: RecievedMessageTableViewCell.identifier, for: indexPath) as? RecievedMessageTableViewCell ?? RecievedMessageTableViewCell(style: .default, reuseIdentifier: RecievedMessageTableViewCell.identifier)
-            cell.messageButton.setTitle("Long time no c u", for: .normal)
+            cell.messageLabel.text = "Long time no c u, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?, Sap Brow how u doing?"
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
+        return UITableView.automaticDimension
     }
 }
