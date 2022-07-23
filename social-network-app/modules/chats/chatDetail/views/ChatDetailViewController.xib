@@ -53,7 +53,7 @@
                             <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system"/>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oqz-1r-Qej">
-                            <rect key="frame" x="8" y="70" width="382" height="670"/>
+                            <rect key="frame" x="8" y="80" width="382" height="660"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-pU-0Ts">
@@ -95,7 +95,7 @@
                         <constraint firstAttribute="bottom" secondItem="dZZ-pU-0Ts" secondAttribute="bottom" constant="8" id="fb7-uC-ONz"/>
                         <constraint firstAttribute="trailing" secondItem="dZZ-pU-0Ts" secondAttribute="trailing" constant="8" id="ifZ-mQ-avE"/>
                         <constraint firstAttribute="trailing" secondItem="oqz-1r-Qej" secondAttribute="trailing" constant="8" id="jHF-Er-gDi"/>
-                        <constraint firstItem="oqz-1r-Qej" firstAttribute="top" secondItem="z62-Js-UnQ" secondAttribute="bottom" id="vHq-Jc-L9V"/>
+                        <constraint firstItem="oqz-1r-Qej" firstAttribute="top" secondItem="z62-Js-UnQ" secondAttribute="bottom" constant="10" id="vHq-Jc-L9V"/>
                     </constraints>
                 </view>
             </subviews>
