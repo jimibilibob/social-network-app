@@ -26,8 +26,8 @@ class SentMessagesTableViewCell: UITableViewCell {
     func setupViews() {
         backgroundColor = UIColor(named: "backgroundLight")
         selectionStyle = .none
-        mainBackgroundView.backgroundColor = .white
-        mainBackgroundView.roundCornersTwo(maskedCorners: [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner], cornerRadius: 25)
+        mainBackgroundView.backgroundColor = messageLabel.backgroundColor
+        mainBackgroundView.roundCornersTwo(maskedCorners: [.layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], cornerRadius: 25)
         mainBackgroundView.clipsToBounds = true
         messageLabel.sizeToFit()
     }

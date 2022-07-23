@@ -30,9 +30,20 @@ class RecievedMessageTableViewCell: UITableViewCell {
     func setupViews() {
         backgroundColor = UIColor(named: "backgroundLight")
         selectionStyle = .none
-        mainBackground.backgroundColor = messageLabel.backgroundColor
-        mainBackground.roundCornersTwo(maskedCorners: [.layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], cornerRadius: 25)
+        mainBackground.backgroundColor = .white
+        mainBackground.roundCornersTwo(maskedCorners: [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner], cornerRadius: 25)
         mainBackground.clipsToBounds = true
         messageLabel.sizeToFit()
     }
+    
+    /**
+     func setupViews() {
+         backgroundColor = UIColor(named: "backgroundLight")
+         selectionStyle = .none
+         mainBackgroundView.backgroundColor = .white
+         mainBackgroundView.roundCornersTwo(maskedCorners: [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner], cornerRadius: 25)
+         mainBackgroundView.clipsToBounds = true
+         messageLabel.sizeToFit()
+     }
+     */
 }
