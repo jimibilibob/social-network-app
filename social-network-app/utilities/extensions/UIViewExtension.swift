@@ -15,4 +15,11 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    
+    func roundCornersTwo(maskedCorners: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner],
+                          cornerRadius: CGFloat) {
+            layer.cornerRadius = cornerRadius
+            layer.maskedCorners = maskedCorners
+            layer.masksToBounds = true
+        }
 }
