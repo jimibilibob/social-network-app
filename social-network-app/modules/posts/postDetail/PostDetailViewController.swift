@@ -74,7 +74,7 @@ class PostDetailViewController: UIViewController {
         postDescriptionTextField.text = post?.description
 
         //avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
-        nameLabel.text = "Saih Nahni"
+        nameLabel.text = DefaultsManager.shared.readUser().name
         /*avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         nameLabel.text = "Saih Nahni"*/
     }

@@ -8,26 +8,35 @@
 import UIKit
 
 class ChatDetailViewController: UIViewController {
+    
 
     @IBOutlet var messageTextField: UITextField!
-    @IBOutlet var sendMessageButton: UIButton!
     @IBOutlet var mainViewBackground: UIView!
-    @IBOutlet var closeButton: UIButton!
     @IBOutlet var avatarImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "German Torook"
         setupViews()
         setupTableView()
     }
     
+    @IBAction func closeAction(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     func setupViews() {
+        let sendButton = UIButton()
+        let image = UIImage(named: "send-button")!
+        sendButton.setImage(image, for: .normal)
+        sendButton.contentEdgeInsets =  UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 12)
+        messageTextField.rightView = sendButton;
+        messageTextField.rightViewMode = .always
+        
         avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         mainViewBackground.backgroundColor = UIColor(named: "backgroundLight")
         mainViewBackground.layer.cornerRadius = 25
-        sendMessageButton.roundCorners(corners: [.allCorners], radius: 25)
-        messageTextField.roundCorners(corners: [.topLeft, .topRight], radius: 25)
+        messageTextField.roundCornersTwo(maskedCorners: [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner], cornerRadius: 25)
     }
     
     func setupTableView() {
