@@ -9,6 +9,7 @@ import Foundation
 
 struct Chat: Codable, BaseModel {
     var id: String
+    let participants: [Person]
     var updatedAt: Date
     var createdAt: Date
 }
