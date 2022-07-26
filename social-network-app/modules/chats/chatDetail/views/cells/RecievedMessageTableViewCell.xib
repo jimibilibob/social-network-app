@@ -4,37 +4,57 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecievedMessageTableViewCell" id="KGk-i7-Jjw" customClass="RecievedMessageTableViewCell" customModule="social_network_app" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agK-Vi-TIQ">
-                        <rect key="frame" x="238" y="10" width="67" height="30"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYX-Hs-1By">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46Z-pX-iHG">
+                                <rect key="frame" x="10" y="10" width="300" height="165"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="vcu-Kx-mj9"/>
+                            <constraint firstAttribute="trailing" secondItem="46Z-pX-iHG" secondAttribute="trailing" constant="10" id="0nz-2g-JQv"/>
+                            <constraint firstItem="46Z-pX-iHG" firstAttribute="leading" secondItem="lYX-Hs-1By" secondAttribute="leading" constant="10" id="1Vm-Hn-Yqb"/>
+                            <constraint firstItem="46Z-pX-iHG" firstAttribute="top" secondItem="lYX-Hs-1By" secondAttribute="top" constant="10" id="7mm-1i-NQL"/>
+                            <constraint firstAttribute="bottom" secondItem="46Z-pX-iHG" secondAttribute="bottom" constant="10" id="ex5-Cu-hu6"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                    </button>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="agK-Vi-TIQ" secondAttribute="trailing" constant="15" id="fFP-e1-Gqv"/>
-                    <constraint firstItem="agK-Vi-TIQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="utl-50-Hws"/>
+                    <constraint firstAttribute="trailing" secondItem="lYX-Hs-1By" secondAttribute="trailing" id="AJq-Ld-ciD"/>
+                    <constraint firstItem="lYX-Hs-1By" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KxM-Bk-Hel"/>
+                    <constraint firstAttribute="bottom" secondItem="lYX-Hs-1By" secondAttribute="bottom" constant="15" id="SGm-Mo-3if"/>
+                    <constraint firstItem="lYX-Hs-1By" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hX5-Hz-zE9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="messageButton" destination="agK-Vi-TIQ" id="Sb6-lP-mT0"/>
+                <outlet property="mainBackground" destination="lYX-Hs-1By" id="epz-2P-SN5"/>
+                <outlet property="messageLabel" destination="46Z-pX-iHG" id="aOP-ES-mSv"/>
             </connections>
-            <point key="canvasLocation" x="132" y="42"/>
+            <point key="canvasLocation" x="131.8840579710145" y="41.517857142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

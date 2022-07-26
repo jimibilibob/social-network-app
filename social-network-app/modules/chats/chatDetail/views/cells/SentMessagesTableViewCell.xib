@@ -17,30 +17,62 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5s0-ey-A6S">
-                        <rect key="frame" x="15" y="10" width="67" height="31"/>
-                        <color key="tintColor" systemColor="labelColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="tinted" title="Button">
-                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </buttonConfiguration>
-                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq8-I1-W2a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WCR-XR-Gp7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1t-8Q-Gsl">
+                                        <rect key="frame" x="10" y="10" width="300" height="25"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="-1" height="-1"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="y1t-8Q-Gsl" secondAttribute="bottom" constant="10" id="3KC-wh-TFR"/>
+                                    <constraint firstItem="y1t-8Q-Gsl" firstAttribute="leading" secondItem="WCR-XR-Gp7" secondAttribute="leading" constant="10" id="R3j-nN-vE7"/>
+                                    <constraint firstItem="y1t-8Q-Gsl" firstAttribute="leading" secondItem="WCR-XR-Gp7" secondAttribute="leading" constant="10" id="UAx-s1-1xs"/>
+                                    <constraint firstAttribute="trailing" secondItem="y1t-8Q-Gsl" secondAttribute="trailing" constant="10" id="bHI-jh-AkL"/>
+                                    <constraint firstAttribute="bottom" secondItem="y1t-8Q-Gsl" secondAttribute="bottom" constant="10" id="h3q-JL-QSu"/>
+                                    <constraint firstItem="y1t-8Q-Gsl" firstAttribute="top" secondItem="WCR-XR-Gp7" secondAttribute="top" constant="10" id="k8U-ly-EIS"/>
+                                    <constraint firstItem="y1t-8Q-Gsl" firstAttribute="top" secondItem="WCR-XR-Gp7" secondAttribute="top" constant="10" id="q9W-Hq-etA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WCR-XR-Gp7" secondAttribute="bottom" id="Ba4-7X-8iy"/>
+                            <constraint firstAttribute="trailing" secondItem="WCR-XR-Gp7" secondAttribute="trailing" id="XFt-1H-MnQ"/>
+                            <constraint firstItem="WCR-XR-Gp7" firstAttribute="leading" secondItem="Eq8-I1-W2a" secondAttribute="leading" id="eih-jV-R6Y"/>
+                            <constraint firstItem="WCR-XR-Gp7" firstAttribute="top" secondItem="Eq8-I1-W2a" secondAttribute="top" id="iRq-Ad-nHi"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5s0-ey-A6S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="6VH-oO-UMf"/>
-                    <constraint firstItem="5s0-ey-A6S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="LVh-6E-BTX"/>
+                    <constraint firstAttribute="bottom" secondItem="Eq8-I1-W2a" secondAttribute="bottom" constant="5" id="0w9-If-eJs"/>
+                    <constraint firstItem="Eq8-I1-W2a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GVV-Wt-VeD"/>
+                    <constraint firstItem="Eq8-I1-W2a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aZ8-b9-fk0"/>
+                    <constraint firstAttribute="trailing" secondItem="Eq8-I1-W2a" secondAttribute="trailing" id="ejy-Tm-AG7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="messageButton" destination="5s0-ey-A6S" id="icD-nm-72j"/>
+                <outlet property="mainBackgroundView" destination="WCR-XR-Gp7" id="DMB-CV-u2I"/>
+                <outlet property="messageLabel" destination="y1t-8Q-Gsl" id="hYn-dy-Igo"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="39.508928571428569"/>
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

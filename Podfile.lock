@@ -1,30 +1,20 @@
 PODS:
-  - InputBarAccessoryView (5.5.0):
-    - InputBarAccessoryView/Core (= 5.5.0)
-  - InputBarAccessoryView/Core (5.5.0)
   - Kingfisher (7.3.0)
-  - MessageKit (3.8.0):
-    - InputBarAccessoryView (~> 5.5.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Kingfisher (~> 7.0)
-  - MessageKit
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
-    - InputBarAccessoryView
     - Kingfisher
-    - MessageKit
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
   Kingfisher: cdb1189a9223b1bc028816bd47c8b8101a58831c
-  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 24c559f91f1e6a786bc30222187a2412367ade9d
+PODFILE CHECKSUM: d63e077ef60b7da1c3d980210031d59bf11d4966
 
 COCOAPODS: 1.11.3

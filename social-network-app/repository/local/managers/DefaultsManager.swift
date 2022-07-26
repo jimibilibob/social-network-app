@@ -22,17 +22,18 @@ class DefaultsManager {
         }
     }
 
-    func readUser() -> User? {
+    func readUser() -> User {
+        var user = User(id: "", name: "", age: 0, email: "", avatar: "", password: "", updatedAt: Date(), createdAt: Date())
         if let data = defaults.data(forKey: userKey) {
             do {
                 let decoder = JSONDecoder()
-                let user = try decoder.decode(User.self, from: data)
+                user = try decoder.decode(User.self, from: data)
                 return user
             } catch {
-                return nil
+                return user
             }
         }
-        return nil
+        return user
     }
 }
 

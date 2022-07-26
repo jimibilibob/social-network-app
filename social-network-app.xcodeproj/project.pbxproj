@@ -20,6 +20,9 @@
 		CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D159E286F752100B3510C /* CoreDataManager.swift */; };
 		CE0D15A1286F754A00B3510C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A0286F754A00B3510C /* NetworkManager.swift */; };
 		CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */; };
+		CE364279288DEE82001DFC99 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364278288DEE82001DFC99 /* DateExtension.swift */; };
+		CE36427B288DF066001DFC99 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36427A288DF066001DFC99 /* ChatListViewModel.swift */; };
+		CE364282288F90FA001DFC99 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364281288F90FA001DFC99 /* UITableViewExtension.swift */; };
 		CE38AEA82881038A00B3128D /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38AEA72881038A00B3128D /* FireStoreManager.swift */; };
 		CE72B1472888E50B00075C01 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B1462888E50B00075C01 /* DefaultsManager.swift */; };
 		CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79F73A28875ACD00A42B4E /* Reaction.swift */; };
@@ -109,6 +112,9 @@
 		CE0D159E286F752100B3510C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE0D15A0286F754A00B3510C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE0D15A2286F757500B3510C /* AuthFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseManager.swift; sourceTree = "<group>"; };
+		CE364278288DEE82001DFC99 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		CE36427A288DF066001DFC99 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		CE364281288F90FA001DFC99 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		CE38AEA72881038A00B3128D /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		CE72B1462888E50B00075C01 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		CE79F73A28875ACD00A42B4E /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 		CE8E89AA2877B0BB004863A3 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CE36427A288DF066001DFC99 /* ChatListViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -587,6 +594,8 @@
 				CED7418F287B8607000C2AB5 /* UIViewExtension.swift */,
 				CED74197287BB942000C2AB5 /* StringExtension.swift */,
 				CEAEFD7628865F190098CD03 /* UIViewControllerExtension.swift */,
+				CE364278288DEE82001DFC99 /* DateExtension.swift */,
+				CE364281288F90FA001DFC99 /* UITableViewExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -909,9 +918,12 @@
 				CED741AB287D2C41000C2AB5 /* ChatDetailViewModel.swift in Sources */,
 				CE8E89C82877BB75004863A3 /* FriendTableViewCell.swift in Sources */,
 				CE035A60286C8565006D4288 /* SceneDelegate.swift in Sources */,
+				CE364282288F90FA001DFC99 /* UITableViewExtension.swift in Sources */,
+				CE36427B288DF066001DFC99 /* ChatListViewModel.swift in Sources */,
 				CEC2BBDE286C8EB10093E307 /* EncodableExtension.swift in Sources */,
 				CEF3F9D9288462DF007A642E /* PostDetailViewController.swift in Sources */,
 				CE0D159F286F752100B3510C /* CoreDataManager.swift in Sources */,
+				CE364279288DEE82001DFC99 /* DateExtension.swift in Sources */,
 				CED741A5287D2A0D000C2AB5 /* Post.swift in Sources */,
 				CED74190287B8607000C2AB5 /* UIViewExtension.swift in Sources */,
 				CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */,

@@ -15,7 +15,6 @@ class PostTableViewModel {
 
     var posts = [Post]()
     var postData: Data?
-    var selectedPost: Post?
 
     var reactions = [Reaction]()
     
@@ -66,7 +65,7 @@ class PostTableViewModel {
     }
     
     func listenPostChanges(completion: @escaping ([Post]) -> Void) {
-        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUser()?.id ?? ""]], type: Post.self, collection: .posts) { result in
+        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUser().id]], type: Post.self, collection: .posts) { result in
             switch result {
             case .success(let posts):
                 completion(posts)

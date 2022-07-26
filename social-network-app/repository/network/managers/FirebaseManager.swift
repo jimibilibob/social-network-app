@@ -19,6 +19,8 @@ enum FirebaseCollections: String {
     case users
     case posts
     case reactions
+    case messages
+    case chats
 }
 
 class FirebaseManager {
@@ -90,6 +92,32 @@ class FirebaseManager {
         }
 
     }
+    
+    func getDocuments<T: Decodable>(whereArrayContains: [String: [Any]], type: T.Type, forCollection collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        var q: Query = db.collection(collection.rawValue)
+        if !whereArrayContains.isEmpty {
+            for (_, p) in whereArrayContains.enumerated() {
+                for val in p.value {
+                    q = q.whereField(p.key, arrayContains: val)
+                }
+            }
+        }
+        q.order(by: "createdAt", descending: true).getDocuments { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+
+    }
 
     private func getQuery(from parameters: [String: Any], forCollection collection: FirebaseCollections) -> Query? {
         var q: Query?
@@ -128,6 +156,51 @@ class FirebaseManager {
             completion(.success(items))
         }
     }
+    
+    func listenCollectionChanges<T: Decodable>(whereArrayContains: [String: [Any]], type: T.Type, collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        var q: Query = db.collection(collection.rawValue)
+        if !whereArrayContains.isEmpty {
+            for (_, p) in whereArrayContains.enumerated() {
+                for val in p.value {
+                    q = q.whereField(p.key, arrayContains: val)
+                }
+                
+            }
+        }
+        q.order(by: "createdAt", descending: false).addSnapshotListener { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+    }
+
+    func listenCollectionChanges<T: Decodable>(by parameters: [String: Any], type: T.Type, collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        let queries = getQuery(from: parameters, forCollection: collection)
+        guard let q = queries else { return completion(.failure(FirebaseErrors.InvalidQueries)) }
+        q.order(by: "createdAt", descending: false).addSnapshotListener { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+    }
 
     func listenCollectionChanges<T: Decodable>(whereIn: [String: [Any]], type: T.Type, collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
         var q: Query = db.collection(collection.rawValue)
@@ -136,7 +209,7 @@ class FirebaseManager {
                 q = q.whereField(p.key, in: p.value)
             }
         }
-        q.order(by: "createdAt", descending: true).addSnapshotListener { querySnapshot, error in
+        q.order(by: "createdAt", descending: false).addSnapshotListener { querySnapshot, error in
             guard error == nil else { return completion(.failure(error!)) }
             guard let documents = querySnapshot?.documents else { return completion(.success([])) }
             

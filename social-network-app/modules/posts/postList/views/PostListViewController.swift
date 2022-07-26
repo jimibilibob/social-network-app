@@ -36,7 +36,7 @@ class PostListViewController: ImagePickerViewController {
     }
     
     func loadPosts() {
-        viewModel.getAllPosts(by: DefaultsManager.shared.readUser()?.id) { result in
+        viewModel.getAllPosts(by: DefaultsManager.shared.readUser().id) { result in
             switch result {
             case .success(let posts):
                 self.viewModel.posts = posts
@@ -77,7 +77,7 @@ class PostListViewController: ImagePickerViewController {
     
     override func setImage(data: Data) {
         let vc = PostDetailViewController()
-        vc.post = Post(id: UUID().uuidString, photo: "", description: "",ownerId: DefaultsManager.shared.readUser()?.id ?? "", updatedAt: Date(), createdAt: Date())
+        vc.post = Post(id: UUID().uuidString, photo: "", description: "",ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date())
         viewModel.postData = data
         vc.dataImage = data
         vc.delegate = self
@@ -115,7 +115,7 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
                      |> RoundCornerImageProcessor(cornerRadius: 25)
         cell.avatarImage.kf.indicatorType = .activity
         cell.avatarImage.kf.setImage(
-            with: URL(string: DefaultsManager.shared.readUser()?.avatar ?? ""),
+            with: URL(string: DefaultsManager.shared.readUser().avatar),
             placeholder: UIImage(named: "placeholderImage"),
             options: [
                 .processor(imageProcessor),
@@ -126,10 +126,10 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         )
         
         cell.delegate = self
-        cell.nameLabel.text = DefaultsManager.shared.readUser()?.name ?? ""
+        cell.nameLabel.text = DefaultsManager.shared.readUser().name
         //cell.avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         
-        hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser()?.id ?? "", post: post)
+        hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))
         return cell
     }
@@ -186,7 +186,7 @@ extension PostListViewController: PostTableViewCellDelegate {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         let reactedPost = viewModel.posts[indexPath.row]
         if hasReacted {
-            viewModel.addReaction(reaction: Reaction(id: UUID().uuidString, postId: reactedPost.id, ownerId: DefaultsManager.shared.readUser()?.id ?? "", updatedAt: Date(), createdAt: Date()))
+            viewModel.addReaction(reaction: Reaction(id: UUID().uuidString, postId: reactedPost.id, ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date()))
         } else {
             let reactions = viewModel.reactions.filter({ $0.postId == reactedPost.id })
             if !reactions.isEmpty {

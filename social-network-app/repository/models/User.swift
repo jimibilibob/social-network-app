@@ -17,3 +17,12 @@ struct User: Codable, BaseModel {
     var updatedAt: Date
     var createdAt: Date
 }
+
+struct Person: Codable, BaseModel {
+    var id: String
+    let userId: String
+    let name: String
+    let photo: String
+    var updatedAt: Date
+    var createdAt: Date
+}

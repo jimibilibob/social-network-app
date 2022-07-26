@@ -59,7 +59,7 @@ class PostDetailViewController: UIViewController {
                      |> RoundCornerImageProcessor(cornerRadius: 25)
         avatarImage.kf.indicatorType = .activity
         avatarImage.kf.setImage(
-            with: URL(string: DefaultsManager.shared.readUser()?.avatar ?? ""),
+            with: URL(string: DefaultsManager.shared.readUser().avatar),
             placeholder: UIImage(named: "placeholderImage"),
             options: [
                 .processor(imageProcessor),
@@ -68,13 +68,13 @@ class PostDetailViewController: UIViewController {
                 .cacheOriginalImage
             ]
         )
-        nameLabel.text = DefaultsManager.shared.readUser()?.name ?? ""
+        nameLabel.text = DefaultsManager.shared.readUser().name
         postImage.contentMode = .scaleToFill
         postImage.layer.cornerRadius = 25
         postDescriptionTextField.text = post?.description
 
         //avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
-        nameLabel.text = "Saih Nahni"
+        nameLabel.text = DefaultsManager.shared.readUser().name
         /*avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         nameLabel.text = "Saih Nahni"*/
     }
