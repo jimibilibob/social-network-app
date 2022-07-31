@@ -56,7 +56,6 @@ class PostDetailViewController: UIViewController {
         
         // Avatar Image
         let imageProcessor = DownsamplingImageProcessor(size: avatarImage.bounds.size)
-                     |> RoundCornerImageProcessor(cornerRadius: 25)
         avatarImage.kf.indicatorType = .activity
         avatarImage.kf.setImage(
             with: URL(string: DefaultsManager.shared.readUser().avatar),
@@ -68,6 +67,7 @@ class PostDetailViewController: UIViewController {
                 .cacheOriginalImage
             ]
         )
+        avatarImage.contentMode = .scaleAspectFill
         nameLabel.text = DefaultsManager.shared.readUser().name
         postImage.contentMode = .scaleToFill
         postImage.layer.cornerRadius = 25

@@ -35,5 +35,9 @@ class DefaultsManager {
         }
         return user
     }
+
+    func deleteUser() -> Void {
+        defaults.removeObject(forKey: userKey)
+    }
 }
 

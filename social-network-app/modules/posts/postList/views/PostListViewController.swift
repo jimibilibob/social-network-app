@@ -34,7 +34,15 @@ class PostListViewController: ImagePickerViewController {
         let chatDetail = FriendListViewController()
         show(chatDetail, sender: nil)
     }
-    
+
+    @objc func signOut() {
+        guard let vc = SceneDelegate.shared?.getRootViewControllerForInvalidUser() else { return }
+        SceneDelegate.shared?.window?.rootViewController = vc
+        navigationController?.popToRootViewController(animated: true)
+        DefaultsManager.shared.deleteUser()
+        //show(vc, sender: nil)
+    }
+
     func loadPosts() {
         viewModel.getAllPosts(by: DefaultsManager.shared.readUser().id) { result in
             switch result {
@@ -62,9 +70,15 @@ class PostListViewController: ImagePickerViewController {
     func setupViews() {
         addPostButton.roundCorners(corners: [.allCorners], radius: 25)
 
+        // AddFriends Button
         let addFriendsImage = UIImage(systemName: "person.fill.badge.plus")
         let addFriendsButton = UIBarButtonItem(image: addFriendsImage, style: .plain, target: self, action: #selector(addFriends))
         navigationItem.leftBarButtonItems = [addFriendsButton]
+
+        // Sign out button
+        let signOutImaget = UIImage(systemName: "rectangle.portrait.and.arrow.right")
+        let signOutButton = UIBarButtonItem(image: signOutImaget, style: .plain, target: self, action: #selector(signOut))
+        navigationItem.rightBarButtonItems = [signOutButton]
         
     }
     
@@ -111,8 +125,7 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         )
 
         // Avatar Image
-        let imageProcessor = DownsamplingImageProcessor(size: cell.avatarImage.bounds.size)
-                     |> RoundCornerImageProcessor(cornerRadius: 25)
+        let imageProcessor = DownsamplingImageProcessor(size: cell.avatarImage.frame.size)
         cell.avatarImage.kf.indicatorType = .activity
         cell.avatarImage.kf.setImage(
             with: URL(string: DefaultsManager.shared.readUser().avatar),
@@ -124,10 +137,9 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
                 .cacheOriginalImage
             ]
         )
-        
+        cell.avatarImage.contentMode = .scaleAspectFill
         cell.delegate = self
         cell.nameLabel.text = DefaultsManager.shared.readUser().name
-        //cell.avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         
         hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))

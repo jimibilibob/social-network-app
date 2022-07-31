@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func signUpAction(_ sender: Any) {
@@ -34,7 +34,8 @@ class SignUpViewController: UIViewController {
                 print("Success login \(user)")
                 DefaultsManager.shared.storeUser(user: user)
                 if let hc = homeController {
-                    self.show(hc, sender: nil)
+                    SceneDelegate.shared?.window?.rootViewController = hc
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             case .failure(let error):
                 print("Error while login \(error)")

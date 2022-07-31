@@ -65,7 +65,6 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="Od2-h6-Sg4"/>
                                     </constraints>
-                                    <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
