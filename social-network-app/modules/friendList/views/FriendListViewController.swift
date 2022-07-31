@@ -18,6 +18,7 @@ class FriendListViewController: UIViewController {
     }
     
     func setupTableView() {
+        title = "Friends"
         tableView.delegate = self
         tableView.dataSource = self
         

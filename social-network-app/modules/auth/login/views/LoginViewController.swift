@@ -33,7 +33,8 @@ class LoginViewController: UIViewController {
                 print("Success login \(user)")
                 DefaultsManager.shared.storeUser(user: user)
                 if let hc = homeController {
-                    self.show(hc, sender: nil)
+                    SceneDelegate.shared?.window?.rootViewController = hc
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             case .failure(let error):
                 print("Error while login \(error)")
