@@ -17,6 +17,7 @@ enum FirebaseErrors: Error {
 
 enum FirebaseCollections: String {
     case users
+    case friends
     case posts
     case reactions
     case messages

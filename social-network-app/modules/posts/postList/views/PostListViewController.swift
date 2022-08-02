@@ -26,7 +26,11 @@ class PostListViewController: ImagePickerViewController {
         setupTableView()
         loadPosts()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+
     @IBAction func addPostAction(_ sender: Any) {
         showAddImageOptionAlert()
     }
@@ -36,11 +40,9 @@ class PostListViewController: ImagePickerViewController {
     }
 
     @objc func signOut() {
-        guard let vc = SceneDelegate.shared?.getRootViewControllerForInvalidUser() else { return }
-        SceneDelegate.shared?.window?.rootViewController = vc
-        navigationController?.popToRootViewController(animated: true)
+        SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: false)
         DefaultsManager.shared.deleteUser()
-        //show(vc, sender: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
 
     func loadPosts() {

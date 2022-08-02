@@ -25,6 +25,10 @@
 		CE364282288F90FA001DFC99 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364281288F90FA001DFC99 /* UITableViewExtension.swift */; };
 		CE38AEA82881038A00B3128D /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38AEA72881038A00B3128D /* FireStoreManager.swift */; };
 		CE72B1472888E50B00075C01 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B1462888E50B00075C01 /* DefaultsManager.swift */; };
+		CE752E962897428F00558467 /* FriendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752E952897428F00558467 /* FriendsListViewModel.swift */; };
+		CE752E98289742E000558467 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752E97289742E000558467 /* Friend.swift */; };
+		CE752E9C2898673F00558467 /* ButtonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752E9A2898673F00558467 /* ButtonsCollectionViewCell.swift */; };
+		CE752E9D2898673F00558467 /* ButtonsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE752E9B2898673F00558467 /* ButtonsCollectionViewCell.xib */; };
 		CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79F73A28875ACD00A42B4E /* Reaction.swift */; };
 		CE8E899B287521AB004863A3 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E8999287521AB004863A3 /* PostListViewController.swift */; };
 		CE8E899C287521AB004863A3 /* PostListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E899A287521AB004863A3 /* PostListViewController.xib */; };
@@ -117,6 +121,10 @@
 		CE364281288F90FA001DFC99 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		CE38AEA72881038A00B3128D /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		CE72B1462888E50B00075C01 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		CE752E952897428F00558467 /* FriendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewModel.swift; sourceTree = "<group>"; };
+		CE752E97289742E000558467 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		CE752E9A2898673F00558467 /* ButtonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE752E9B2898673F00558467 /* ButtonsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonsCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE79F73A28875ACD00A42B4E /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		CE8E8999287521AB004863A3 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		CE8E899A287521AB004863A3 /* PostListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewController.xib; sourceTree = "<group>"; };
@@ -421,6 +429,15 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
+		CE752E992898670E00558467 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE752E9A2898673F00558467 /* ButtonsCollectionViewCell.swift */,
+				CE752E9B2898673F00558467 /* ButtonsCollectionViewCell.xib */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		CE8E89A82877B093004863A3 /* chats */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +493,7 @@
 		CE8E89C42877BB2D004863A3 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CE752E952897428F00558467 /* FriendsListViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -485,6 +503,7 @@
 			children = (
 				CE8E89C62877BB75004863A3 /* FriendTableViewCell.swift */,
 				CE8E89C72877BB75004863A3 /* FriendTableViewCell.xib */,
+				CE752E992898670E00558467 /* cells */,
 				CE8E89CA2877BBB0004863A3 /* FriendListViewController.swift */,
 				CE8E89CB2877BBB0004863A3 /* FriendListViewController.xib */,
 			);
@@ -552,6 +571,7 @@
 				CED741A4287D2A0D000C2AB5 /* Post.swift */,
 				CED741AC287D2C7F000C2AB5 /* Chat.swift */,
 				CE79F73A28875ACD00A42B4E /* Reaction.swift */,
+				CE752E97289742E000558467 /* Friend.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -808,6 +828,7 @@
 				CE8E89A728768FCE004863A3 /* PostTableViewCell.xib in Resources */,
 				CE035A6A286C8566006D4288 /* Assets.xcassets in Resources */,
 				CE035A65286C8565006D4288 /* Main.storyboard in Resources */,
+				CE752E9D2898673F00558467 /* ButtonsCollectionViewCell.xib in Resources */,
 				CE8E89B42877B130004863A3 /* ChatListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,6 +925,7 @@
 				CEC2BBDA286C8D440093E307 /* FirebaseManager.swift in Sources */,
 				CE035A5E286C8565006D4288 /* AppDelegate.swift in Sources */,
 				CED7417D287B3683000C2AB5 /* UIColorExtension.swift in Sources */,
+				CE752E9C2898673F00558467 /* ButtonsCollectionViewCell.swift in Sources */,
 				CE8E899B287521AB004863A3 /* PostListViewController.swift in Sources */,
 				CEF3F9C8288125F7007A642E /* DeviceImageLibraryViewController.swift in Sources */,
 				CE0D15A3286F757500B3510C /* AuthFirebaseManager.swift in Sources */,
@@ -912,6 +934,7 @@
 				CEAEFD7428865D840098CD03 /* ErrorAlert.swift in Sources */,
 				CED74184287B6211000C2AB5 /* ChatDetailViewController.swift in Sources */,
 				CE8E89A628768FCE004863A3 /* PostTableViewCell.swift in Sources */,
+				CE752E98289742E000558467 /* Friend.swift in Sources */,
 				CEC2D218288A46A300343AAB /* SignUpViewController.swift in Sources */,
 				CEF3F9C9288125F7007A642E /* ImagePickerViewController.swift in Sources */,
 				CED741A9287D2C25000C2AB5 /* SettingsViewModel.swift in Sources */,
@@ -930,6 +953,7 @@
 				CEF3F9CB28813996007A642E /* ImageManager.swift in Sources */,
 				CEC2D215288A469500343AAB /* LoginViewController.swift in Sources */,
 				CED741A7287D2B52000C2AB5 /* ProfileViewModel.swift in Sources */,
+				CE752E962897428F00558467 /* FriendsListViewModel.swift in Sources */,
 				CE8E89CC2877BBB0004863A3 /* FriendListViewController.swift in Sources */,
 				CED741AD287D2C7F000C2AB5 /* Chat.swift in Sources */,
 				CE8E89AF2877B10E004863A3 /* ChatTableViewCell.swift in Sources */,

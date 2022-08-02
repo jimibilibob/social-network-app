@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ButtonsCollectionViewCell" customModule="social_network_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIs-Yk-kMi">
+                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VFr-LH-ivV">
+                                <rect key="frame" x="3" y="6.5" width="52" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Qpp-UB-CFA"/>
+                                    <constraint firstAttribute="width" constant="50" id="kyN-mA-vt3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VFr-LH-ivV" firstAttribute="centerY" secondItem="EIs-Yk-kMi" secondAttribute="centerY" id="OdT-YL-dEF"/>
+                            <constraint firstItem="VFr-LH-ivV" firstAttribute="centerX" secondItem="EIs-Yk-kMi" secondAttribute="centerX" id="eDF-fG-VM5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="EIs-Yk-kMi" secondAttribute="trailing" id="4RB-32-osW"/>
+                <constraint firstAttribute="bottom" secondItem="EIs-Yk-kMi" secondAttribute="bottom" id="6Lz-Vc-5mh"/>
+                <constraint firstItem="EIs-Yk-kMi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8GG-Kc-E08"/>
+                <constraint firstItem="EIs-Yk-kMi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="K2L-SN-UoB"/>
+            </constraints>
+            <connections>
+                <outlet property="image" destination="VFr-LH-ivV" id="Usr-wC-QGO"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="37.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

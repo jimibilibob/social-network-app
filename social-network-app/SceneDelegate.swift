@@ -29,9 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController = validUser
             ? getRootViewControllerForValidUser()
             : getRootViewControllerForInvalidUser()
-        
+
         nc.viewControllers = [rootViewController]
-        
+
         self.window?.rootViewController = nc
         self.window?.makeKeyAndVisible()
     }
