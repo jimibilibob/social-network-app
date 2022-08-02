@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendListViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
-                <outlet property="searchBar" destination="tRX-RF-Cql" id="wkd-Ur-gUa"/>
+                <outlet property="searchBar" destination="tRX-RF-Cql" id="2Zu-0O-fcH"/>
                 <outlet property="tableView" destination="vjH-M2-b4y" id="FxH-rA-dSk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,30 +25,20 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vjH-M2-b4y">
-                    <rect key="frame" x="0.0" y="146" width="414" height="716"/>
+                    <rect key="frame" x="0.0" y="103" width="414" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Zb-mL-vhH">
-                    <rect key="frame" x="20" y="95" width="374" height="32"/>
-                    <segments>
-                        <segment title="Friends"/>
-                        <segment title="Friends Request"/>
-                    </segments>
-                </segmentedControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="tRX-RF-Cql" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4OR-1W-UVK"/>
-                <constraint firstItem="5Zb-mL-vhH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="C32-Yu-g8E"/>
-                <constraint firstItem="vjH-M2-b4y" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="D9b-1R-tpq"/>
+                <constraint firstItem="vjH-M2-b4y" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="54l-Q4-obz"/>
+                <constraint firstItem="vjH-M2-b4y" firstAttribute="top" secondItem="tRX-RF-Cql" secondAttribute="bottom" constant="8" id="EzQ-nM-vKg"/>
                 <constraint firstItem="tRX-RF-Cql" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Kw9-S5-m7s"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Zb-mL-vhH" secondAttribute="trailing" constant="20" id="O5r-qO-vHg"/>
-                <constraint firstItem="vjH-M2-b4y" firstAttribute="top" secondItem="5Zb-mL-vhH" secondAttribute="bottom" constant="20" id="S6N-B9-SgP"/>
-                <constraint firstItem="vjH-M2-b4y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XxL-mu-TL1"/>
+                <constraint firstItem="vjH-M2-b4y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MqQ-st-1Il"/>
                 <constraint firstItem="tRX-RF-Cql" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hJE-gD-l3j"/>
-                <constraint firstItem="5Zb-mL-vhH" firstAttribute="top" secondItem="tRX-RF-Cql" secondAttribute="bottom" id="w4y-l3-ToN"/>
-                <constraint firstItem="vjH-M2-b4y" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zkv-12-g0b"/>
+                <constraint firstItem="vjH-M2-b4y" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="hpq-rd-ELB"/>
             </constraints>
             <point key="canvasLocation" x="128.98550724637681" y="43.526785714285715"/>
         </view>

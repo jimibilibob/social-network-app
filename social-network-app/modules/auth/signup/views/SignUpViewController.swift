@@ -30,13 +30,9 @@ class SignUpViewController: UIViewController {
         AuthFirebaseManager.shared.signUp(userName: userName, password: password, completion: { result in
             switch result {
             case .success(let user):
-                let homeController = SceneDelegate.shared?.getRootViewControllerForValidUser()
-                print("Success login \(user)")
                 DefaultsManager.shared.storeUser(user: user)
-                if let hc = homeController {
-                    SceneDelegate.shared?.window?.rootViewController = hc
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
+                SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: false)
+                self.navigationController?.popToRootViewController(animated: true)
             case .failure(let error):
                 print("Error while login \(error)")
             }

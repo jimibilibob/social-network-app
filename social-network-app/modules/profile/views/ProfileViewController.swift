@@ -9,7 +9,8 @@ import UIKit
 import Kingfisher
 
 class ProfileViewController: UIViewController {
-
+    var user: User
+    
     @IBOutlet var avatarImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -17,6 +18,15 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+    }
+
+    init(user: User = DefaultsManager.shared.readUser()) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: SHOW WHEN IS NOT THE PROFILE OWNER
@@ -28,15 +38,15 @@ class ProfileViewController: UIViewController {
         // TODO: Send Message
     }
     func setupViews() {
+        title = self.user.name
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: PostTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PostTableViewCell.identifier)
 
-        let currentUser = DefaultsManager.shared.readUser()
         let imageProcessor = DownsamplingImageProcessor(size: avatarImage.bounds.size)
         avatarImage.kf.indicatorType = .activity
         avatarImage.kf.setImage(
-            with: URL(string: currentUser.avatar),
+            with: URL(string: self.user.avatar),
             placeholder: UIImage(named: "placeholderImage"),
             options: [
                 .processor(imageProcessor),
@@ -48,7 +58,7 @@ class ProfileViewController: UIViewController {
         avatarImage.contentMode = .scaleAspectFill
         avatarImage.layer.cornerRadius = 110
 
-        nameLabel.text = "@\(currentUser.name)"
+        nameLabel.text = "@\(self.user.name)"
     }
 }
 
