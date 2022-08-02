@@ -54,6 +54,9 @@ class FriendTableViewCell: UITableViewCell {
         buttonsCollectionView.delegate = self
         buttonsCollectionView.dataSource = self
 
+        if let friend = friend, friend.friendState == FriendState.accepted.rawValue {
+            return
+        }
         if let friend = friend, friend.friendState == FriendState.pending.rawValue {
             let currentUser = DefaultsManager.shared.readUser()
             buttons.append(.remove)

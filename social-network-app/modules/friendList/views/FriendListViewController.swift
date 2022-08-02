@@ -13,15 +13,20 @@ class FriendListViewController: UIViewController {
         FriendsListViewModel()
     }()
     
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         loadFriends()
+        setupSearchBar()
     }
-    
+
+    func setupSearchBar() {
+        searchBar.delegate = self
+    }
+
     func setupTableView() {
         title = "Friends"
         tableView.delegate = self
@@ -37,7 +42,6 @@ class FriendListViewController: UIViewController {
             case .success(let friends):
                 self.viewModel.friends = friends
                 self.viewModel.getPeopleData() { people in
-                        self.viewModel.people = people
                     self.tableView.reloadData()
                 }
             case .failure(_):
@@ -47,15 +51,36 @@ class FriendListViewController: UIViewController {
     }
 }
 
+extension FriendListViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard searchText.isEmpty else { return }
+        viewModel.filterPeople(word: searchText)
+        searchBar.text = ""
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text,
+                !searchText.isEmpty else { return }
+        view.endEditing(true)
+        viewModel.filterPeople(word: searchText)
+        tableView.reloadData()
+    }
+}
+
 extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel.people.count
+        self.viewModel.filteredPeople.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as? FriendTableViewCell ?? FriendTableViewCell(style: .default, reuseIdentifier: FriendTableViewCell.identifier)
 
-        let personData = self.viewModel.people[indexPath.row]
+        let personData = self.viewModel.filteredPeople[indexPath.row]
         let friend = self.viewModel.getFriend(person: personData)
 
         cell.setupViews(friend: friend, person: personData)
@@ -65,7 +90,7 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let person = self.viewModel.people[indexPath.row]
+        let person = self.viewModel.filteredPeople[indexPath.row]
         let vc = ProfileViewController(user: person)
         show(vc, sender: nil)
     }
@@ -78,7 +103,7 @@ extension FriendListViewController: UITableViewDelegate, UITableViewDataSource {
 extension FriendListViewController: FriendTableViewCellDelegate {
     func addFriend(cell: FriendTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
-        let person = self.viewModel.people[indexPath.row]
+        let person = self.viewModel.filteredPeople[indexPath.row]
         let friend = self.viewModel.getFriendByPerson(person: person)
         self.viewModel.addNewFriend(friend: friend) { result in
             switch result {
@@ -92,7 +117,7 @@ extension FriendListViewController: FriendTableViewCellDelegate {
 
     func acceptFriend(cell: FriendTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
-        let person = self.viewModel.people[indexPath.row]
+        let person = self.viewModel.filteredPeople[indexPath.row]
         let friend = self.viewModel.getFriend(person: person)
         guard let friend = friend else { return }
         self.viewModel.acceptFriend(friend: friend) { result in
@@ -107,7 +132,7 @@ extension FriendListViewController: FriendTableViewCellDelegate {
 
     func removeFriend(cell: FriendTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
-        let person = self.viewModel.people[indexPath.row]
+        let person = self.viewModel.filteredPeople[indexPath.row]
         let friend = self.viewModel.getFriend(person: person)
         guard let friend = friend else { return }
         self.viewModel.removeFriend(friendId: friend.id) { result in

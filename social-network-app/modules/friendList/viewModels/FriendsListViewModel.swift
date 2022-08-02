@@ -13,6 +13,7 @@ class FriendsListViewModel {
 
     var friends = [Friend]()
     var people = [User]()
+    var filteredPeople = [User]()
     var reloadTable: (() -> Void)?
     var reloadCollectionView: (() -> Void)?
     
@@ -57,6 +58,7 @@ class FriendsListViewModel {
             case .success(var people):
                 people = people.filter({ $0.id != DefaultsManager.shared.readUser().id })
                 self.people = people
+                self.filteredPeople = people
                 completion(people)
             case .failure(let error):
                 print("Error while fetching people \(error)")
@@ -108,4 +110,13 @@ class FriendsListViewModel {
             $0.receiverUserId == person.id
         }).first
     }
+
+    func filterPeople(word: String) {
+        guard !word.isEmpty else {
+            filteredPeople = people
+            return
+        }
+        filteredPeople = people.filter({ $0.name.lowercased().contains(word.lowercased()) })
+    }
+
 }
