@@ -10,7 +10,12 @@ import Kingfisher
 
 class ProfileViewController: UIViewController {
     var user: User
+
+    lazy var viewModel = {
+        ProfileViewModel()
+    }()
     
+    @IBOutlet var messageButton: UIButton!
     @IBOutlet var avatarImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -29,14 +34,28 @@ class ProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: SHOW WHEN IS NOT THE PROFILE OWNER
-    @IBAction func addFriendAction(_ sender: Any) {
-        // TODO: Add friend
+    @IBAction func messageAction(_ sender: Any) {
+        let currentUser = DefaultsManager.shared.readUser()
+        let participants = [
+            Person(id: UUID().uuidString, userId: user.id, name: user.name, photo: user.avatar, updatedAt: Date(), createdAt: Date()),
+            Person(id: UUID().uuidString, userId: currentUser.id, name: currentUser.name, photo: currentUser.avatar, updatedAt: Date(), createdAt: Date()),
+        ]
+        viewModel.getChatIfExists(participants: participants) { chat in
+            if let chat = chat {
+                self.show(ChatDetailViewController(chat: chat), sender: nil)
+                return
+            }
+            self.viewModel.addNewChat(participants: participants) { result in
+                switch result {
+                case .success(let chat):
+                    self.show(ChatDetailViewController(chat: chat), sender: nil)
+                case .failure(let error):
+                    print("Error:", error)
+                }
+            }
+        }
     }
 
-    @IBAction func messageAction(_ sender: Any) {
-        // TODO: Send Message
-    }
     func setupViews() {
         title = self.user.name
         tableView.delegate = self
@@ -56,9 +75,14 @@ class ProfileViewController: UIViewController {
             ]
         )
         avatarImage.contentMode = .scaleAspectFill
-        avatarImage.layer.cornerRadius = 110
+        avatarImage.layer.cornerRadius = 50
 
         nameLabel.text = "@\(self.user.name)"
+
+        // MARK: Show the buttons to message just in case the profile is not from the current User
+        if user.id == DefaultsManager.shared.readUser().id {
+            messageButton.isHidden = true
+        }
     }
 }
 

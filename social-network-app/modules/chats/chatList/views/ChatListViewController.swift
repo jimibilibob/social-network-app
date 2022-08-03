@@ -26,6 +26,8 @@ class ChatListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: ChatTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ChatTableViewCell.identifier)
+
+        viewModel.reloadTable = tableView.reloadData
     }
 
     func loadChats() {

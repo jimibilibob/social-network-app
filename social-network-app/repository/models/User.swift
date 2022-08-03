@@ -18,7 +18,15 @@ struct User: Codable, BaseModel {
     var createdAt: Date
 }
 
-struct Person: Codable, BaseModel {
+struct Person: Codable, BaseModel, Comparable {
+    static func < (lhs: Person, rhs: Person) -> Bool {
+        return lhs.userId < rhs.userId
+    }
+
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        return lhs.userId == rhs.userId
+    }
+    
     var id: String
     let userId: String
     let name: String

@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController {
             switch result {
             case .success(let user):
                 DefaultsManager.shared.storeUser(user: user)
-                SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: false)
+                SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: true)
                 self.navigationController?.popToRootViewController(animated: true)
             case .failure(let error):
                 print("Error while login \(error)")

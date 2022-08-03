@@ -13,11 +13,13 @@ class ChatListViewModel {
     let fireStoreManager = FirebaseStorageManager.shared
 
     var chats = [Chat]()
+    var reloadTable: (()-> Void)?
 
     
     init() {
         self.listenChatChanges { chats in
             self.chats = chats
+            self.reloadTable?()
         }
         
     }
