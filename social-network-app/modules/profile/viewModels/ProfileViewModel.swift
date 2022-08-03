@@ -20,8 +20,8 @@ class ProfileViewModel {
 
     var reactions = [Reaction]()
     
-    init() {
-        self.listenPostChanges { posts in
+    init(user: User) {
+        self.listenPostChanges(user: user) { posts in
             self.posts = posts
             self.reloadTable?()
             self.listenReactionsChanges(posts: posts) { reactions in
@@ -56,8 +56,8 @@ class ProfileViewModel {
         }
     }
     
-    func listenPostChanges(completion: @escaping ([Post]) -> Void) {
-        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUser().id]], type: Post.self, collection: .posts) { result in
+    func listenPostChanges(user: User, completion: @escaping ([Post]) -> Void) {
+        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [user.id]], type: Post.self, collection: .posts) { result in
             switch result {
             case .success(let posts):
                 completion(posts)
@@ -166,8 +166,8 @@ class ProfileViewModel {
         })
     }
 
-    func getChatIfExists(participants: [Person], completion: @escaping (Chat?) -> Void) {
-        getAllChats() { chats in
+    func getChatIfExists(user: User, participants: [Person], completion: @escaping (Chat?) -> Void) {
+        getAllChats(user: user) { chats in
             var oldChat: Chat? = nil
             for chat in chats {
                 if chat.participants.containsSameElements(as: participants) {
@@ -179,8 +179,7 @@ class ProfileViewModel {
         }
     }
 
-    private func getAllChats(completion: @escaping ([Chat]) -> Void) {
-        let user = DefaultsManager.shared.readUser()
+    private func getAllChats(user: User, completion: @escaping ([Chat]) -> Void) {
         firebaseManager.getDocuments(type: Chat.self, forCollection: .chats) {
             result in
                switch result {
@@ -194,12 +193,11 @@ class ProfileViewModel {
     }
 
     // MARK: Friends
-    func getAllAcceptedFriends(completion: @escaping ([Friend]) -> Void) {
-        let currentUser = DefaultsManager.shared.readUser()
+    func getAllAcceptedFriends(user: User, completion: @escaping ([Friend]) -> Void) {
         firebaseManager.getDocuments(type: Friend.self, forCollection: .friends) { result in
             switch result {
             case .success(var friends):
-                friends = friends.filter({ ($0.receiverUserId ==  currentUser.id ||                    $0.senderUserId == currentUser.id) &&
+                friends = friends.filter({ ($0.receiverUserId ==  user.id ||                    $0.senderUserId == user.id) &&
                     $0.friendState == FriendState.accepted.rawValue
                 })
                 completion(friends)

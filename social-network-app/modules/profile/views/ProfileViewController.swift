@@ -11,10 +11,7 @@ import Kingfisher
 
 class ProfileViewController: ImagePickerViewController {
     var user: User
-
-    lazy var viewModel = {
-        ProfileViewModel()
-    }()
+    var viewModel: ProfileViewModel
     
     @IBOutlet var friendsLabel: UILabel!
     @IBOutlet var addPostButton: UIButton!
@@ -41,6 +38,7 @@ class ProfileViewController: ImagePickerViewController {
 
     init(user: User = DefaultsManager.shared.readUser()) {
         self.user = user
+        self.viewModel = ProfileViewModel(user: user)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,7 +47,7 @@ class ProfileViewController: ImagePickerViewController {
     }
 
     func loadPosts() {
-        viewModel.getAllPosts(by: DefaultsManager.shared.readUser().id) { result in
+        viewModel.getAllPosts(by: user.id) { result in
             switch result {
             case .success(let posts):
                 self.viewModel.posts = posts
@@ -73,7 +71,7 @@ class ProfileViewController: ImagePickerViewController {
     }
 
     func setFriendsLabel() {
-        viewModel.getAllAcceptedFriends() { friends in
+        viewModel.getAllAcceptedFriends(user: user) { friends in
             self.friendsLabel.text = "\(friends.count) Friends"
         }
     }
@@ -88,7 +86,7 @@ class ProfileViewController: ImagePickerViewController {
             Person(id: UUID().uuidString, userId: user.id, name: user.name, photo: user.avatar, updatedAt: Date(), createdAt: Date()),
             Person(id: UUID().uuidString, userId: currentUser.id, name: currentUser.name, photo: currentUser.avatar, updatedAt: Date(), createdAt: Date()),
         ]
-        viewModel.getChatIfExists(participants: participants) { chat in
+        viewModel.getChatIfExists(user: user, participants: participants) { chat in
             if let chat = chat {
                 self.show(ChatDetailViewController(chat: chat), sender: nil)
                 return
@@ -175,7 +173,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let imageProcessor = DownsamplingImageProcessor(size: cell.avatarImage.frame.size)
         cell.avatarImage.kf.indicatorType = .activity
         cell.avatarImage.kf.setImage(
-            with: URL(string: DefaultsManager.shared.readUser().avatar),
+            with: URL(string: user.avatar),
             placeholder: UIImage(named: "placeholderImage"),
             options: [
                 .processor(imageProcessor),
@@ -186,7 +184,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         )
         cell.avatarImage.contentMode = .scaleAspectFill
         cell.delegate = self
-        cell.nameLabel.text = DefaultsManager.shared.readUser().name
+        cell.nameLabel.text = user.name
         
         let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))
