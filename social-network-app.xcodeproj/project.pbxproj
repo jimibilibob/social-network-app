@@ -10,8 +10,6 @@
 		A3BF3FAB4996972661C9F77C /* Pods_social_network_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFD0BD18AB0B279B17557B7 /* Pods_social_network_appTests.framework */; };
 		CE035A5E286C8565006D4288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A5D286C8565006D4288 /* AppDelegate.swift */; };
 		CE035A60286C8565006D4288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A5F286C8565006D4288 /* SceneDelegate.swift */; };
-		CE035A62286C8565006D4288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE035A61286C8565006D4288 /* ViewController.swift */; };
-		CE035A65286C8565006D4288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE035A63286C8565006D4288 /* Main.storyboard */; };
 		CE035A68286C8565006D4288 /* social_network_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE035A66286C8565006D4288 /* social_network_app.xcdatamodeld */; };
 		CE035A6A286C8566006D4288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE035A69286C8566006D4288 /* Assets.xcassets */; };
 		CE035A6D286C8566006D4288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE035A6B286C8566006D4288 /* LaunchScreen.storyboard */; };
@@ -31,6 +29,7 @@
 		CE752E9D2898673F00558467 /* ButtonsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE752E9B2898673F00558467 /* ButtonsCollectionViewCell.xib */; };
 		CE79F73B28875ACD00A42B4E /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79F73A28875ACD00A42B4E /* Reaction.swift */; };
 		CE84152C2899C6BA00DDD0B0 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84152B2899C6BA00DDD0B0 /* ArrayExtension.swift */; };
+		CE84152E289A2BD600DDD0B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE84152D289A2BD600DDD0B0 /* Main.storyboard */; };
 		CE8E899B287521AB004863A3 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E8999287521AB004863A3 /* PostListViewController.swift */; };
 		CE8E899C287521AB004863A3 /* PostListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8E899A287521AB004863A3 /* PostListViewController.xib */; };
 		CE8E89A628768FCE004863A3 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E89A428768FCE004863A3 /* PostTableViewCell.swift */; };
@@ -105,8 +104,6 @@
 		CE035A5A286C8565006D4288 /* social-network-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "social-network-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE035A5D286C8565006D4288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE035A5F286C8565006D4288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE035A61286C8565006D4288 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE035A64286C8565006D4288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE035A67286C8565006D4288 /* social_network_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = social_network_app.xcdatamodel; sourceTree = "<group>"; };
 		CE035A69286C8566006D4288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE035A6C286C8566006D4288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +125,7 @@
 		CE752E9B2898673F00558467 /* ButtonsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonsCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE79F73A28875ACD00A42B4E /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		CE84152B2899C6BA00DDD0B0 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		CE84152D289A2BD600DDD0B0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE8E8999287521AB004863A3 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		CE8E899A287521AB004863A3 /* PostListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListViewController.xib; sourceTree = "<group>"; };
 		CE8E89A428768FCE004863A3 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -251,9 +249,8 @@
 				CEC2BBD1286C8CB80093E307 /* repository */,
 				CE035A90286C865E006D4288 /* GoogleService-Info.plist */,
 				CE035A5D286C8565006D4288 /* AppDelegate.swift */,
+				CE84152D289A2BD600DDD0B0 /* Main.storyboard */,
 				CE035A5F286C8565006D4288 /* SceneDelegate.swift */,
-				CE035A61286C8565006D4288 /* ViewController.swift */,
-				CE035A63286C8565006D4288 /* Main.storyboard */,
 				CE035A69286C8566006D4288 /* Assets.xcassets */,
 				CE035A6B286C8566006D4288 /* LaunchScreen.storyboard */,
 				CE035A6E286C8566006D4288 /* Info.plist */,
@@ -830,8 +827,8 @@
 				CED74189287B7E77000C2AB5 /* SentMessagesTableViewCell.xib in Resources */,
 				CE8E89A728768FCE004863A3 /* PostTableViewCell.xib in Resources */,
 				CE035A6A286C8566006D4288 /* Assets.xcassets in Resources */,
-				CE035A65286C8565006D4288 /* Main.storyboard in Resources */,
 				CE752E9D2898673F00558467 /* ButtonsCollectionViewCell.xib in Resources */,
+				CE84152E289A2BD600DDD0B0 /* Main.storyboard in Resources */,
 				CE8E89B42877B130004863A3 /* ChatListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -916,7 +913,6 @@
 			files = (
 				CEC2BBD6286C8CE10093E307 /* BaseModel.swift in Sources */,
 				CED741A3287D295A000C2AB5 /* PostTableViewModel.swift in Sources */,
-				CE035A62286C8565006D4288 /* ViewController.swift in Sources */,
 				CE8E89B62877B6C1004863A3 /* UIImageExtension.swift in Sources */,
 				CEAEFD7728865F190098CD03 /* UIViewControllerExtension.swift in Sources */,
 				CED74188287B7E77000C2AB5 /* SentMessagesTableViewCell.swift in Sources */,
@@ -987,14 +983,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE035A63286C8565006D4288 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE035A64286C8565006D4288 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE035A6B286C8566006D4288 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1132,9 +1120,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "social-network-app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Social Network";
+				INFOPLIST_KEY_NSMainNibFile = LoginViewController;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo access request";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1162,9 +1151,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "social-network-app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Social Network";
+				INFOPLIST_KEY_NSMainNibFile = LoginViewController;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo access request";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,15 +9,14 @@ import UIKit
 import SVProgressHUD
 import Kingfisher
 
-class PostListViewController: ImagePickerViewController {
-    
-    @IBOutlet var addPostButton: UIButton!
+class PostListViewController: UIViewController {
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     lazy var viewModel = {
         PostTableViewModel()
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -26,11 +25,8 @@ class PostListViewController: ImagePickerViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        loadPosts()
         tableView.reloadData()
-    }
-
-    @IBAction func addPostAction(_ sender: Any) {
-        showAddImageOptionAlert()
     }
 
     @objc func addFriends() {
@@ -45,13 +41,15 @@ class PostListViewController: ImagePickerViewController {
     }
 
     func loadPosts() {
-        viewModel.getAllPosts(by: DefaultsManager.shared.readUser().id) { result in
-            switch result {
-            case .success(let posts):
-                self.viewModel.posts = posts
-                self.loadReactions(posts: posts)
-            case .failure(let error):
-                ErrorAlert.shared.showAlert(title: "Error while fetching posts", message: error.localizedDescription, target: self)
+        viewModel.getPeople() { _ in
+            self.viewModel.getAllPosts() { result in
+                switch result {
+                case .success(let posts):
+                    self.viewModel.posts = posts
+                    self.loadReactions(posts: posts)
+                case .failure(let error):
+                    ErrorAlert.shared.showAlert(title: "Error while fetching posts", message: error.localizedDescription, target: self)
+                }
             }
         }
     }
@@ -67,10 +65,8 @@ class PostListViewController: ImagePickerViewController {
             }
         }
     }
-    
-    func setupViews() {
-        addPostButton.roundCorners(corners: [.allCorners], radius: 25)
 
+    func setupViews() {
         // AddFriends Button
         let addFriendsImage = UIImage(systemName: "person.fill.badge.plus")
         let addFriendsButton = UIBarButtonItem(image: addFriendsImage, style: .plain, target: self, action: #selector(addFriends))
@@ -90,16 +86,6 @@ class PostListViewController: ImagePickerViewController {
         
         tableView.register(UINib(nibName: PostTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PostTableViewCell.identifier)
     }
-    
-    override func setImage(data: Data) {
-        let vc = PostDetailViewController()
-        vc.post = Post(id: UUID().uuidString, photo: "", description: "",ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date())
-        viewModel.postData = data
-        vc.dataImage = data
-        vc.delegate = self
-        show(vc, sender: nil)
-    }
-
 }
 
 extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -127,10 +113,15 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         )
 
         // Avatar Image
+        let postOwner = viewModel.getPostOwner(post: post)
+        guard let postOwner = postOwner else {
+            return cell
+        }
+
         let imageProcessor = DownsamplingImageProcessor(size: cell.avatarImage.frame.size)
         cell.avatarImage.kf.indicatorType = .activity
         cell.avatarImage.kf.setImage(
-            with: URL(string: DefaultsManager.shared.readUser().avatar),
+            with: URL(string: postOwner.avatar),
             placeholder: UIImage(named: "placeholderImage"),
             options: [
                 .processor(imageProcessor),
@@ -141,7 +132,7 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         )
         cell.avatarImage.contentMode = .scaleAspectFill
         cell.delegate = self
-        cell.nameLabel.text = DefaultsManager.shared.readUser().name
+        cell.nameLabel.text = postOwner.name
         
         let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))
@@ -153,41 +144,6 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
      }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PostDetailViewController()
-        let post = viewModel.posts[indexPath.row]
-        vc.post = post
-        vc.delegate = self
-        show(vc, sender: nil)
-    }
-}
-
-extension PostListViewController: PostDetailViewControllerDelegate {
-    func savePost(post: Post) {
-        SVProgressHUD.show()
-        guard let image = UIImage(data: viewModel.postData ?? Data()) else { return }
-        self.viewModel.uploadPostFile(file: image) { image in
-            let newPost = Post(id: post.id, photo: image.absoluteString, description: post.description, ownerId: post.ownerId, updatedAt: post.updatedAt, createdAt: post.createdAt)
-            self.viewModel.addNewPost(post: newPost) { result in
-                switch result {
-                case .success(_):
-                    self.tableView.reloadData()
-                    self.navigationController?.popToRootViewController(animated: true)
-                    self.showToast(message: "New post created!", seconds: 2)
-                case .failure(_):
-                    ErrorAlert.shared.showAlert(title: "Error ", message: "Error while posting, please try again later.", target: self)
-                }
-                SVProgressHUD.dismiss()
-            }
-        }
-    }
-    
-    func updatePost(post: Post) {
-        SVProgressHUD.show()
-        self.viewModel.editPost(post: post) { post in
-            self.navigationController?.popToRootViewController(animated: true)
-            SVProgressHUD.dismiss()
-            self.showToast(message: "Post edited successfully!", seconds: 2)
-        }
     }
 }
 
@@ -196,6 +152,7 @@ extension PostListViewController: PostTableViewCellDelegate {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         let reactedPost = viewModel.posts[indexPath.row]
         let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: reactedPost)
+        // TODO: Check when a User remove an reaction, sometimes removes the other person reaction
         if !hasReacted {
             viewModel.addReaction(reaction: Reaction(id: UUID().uuidString, postId: reactedPost.id, ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date()))
             return

@@ -22,7 +22,7 @@ class ChatDetailViewModel {
         self.listenMessageChanges { messages in
             self.messages = messages
             self.reloadTable?()
-            if !messages.isEmpty {
+            if messages.count > 3 {
                 self.scrollToBotton?()
             }
         }

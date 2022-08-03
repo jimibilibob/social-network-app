@@ -14,6 +14,7 @@ class PostTableViewModel {
     let storageRoute = "posts"
 
     var posts = [Post]()
+    var people = [User]()
     var postData: Data?
     var reloadTable: (()->Void)?
 
@@ -28,26 +29,12 @@ class PostTableViewModel {
                 self.reloadTable?()
             }
         }
-        
     }
     
     func getAllPosts(completion: @escaping ( Result<[Post], Error>) -> Void) {
         firebaseManager.getDocuments(type: Post.self, forCollection: .posts) { result in
             switch result {
             case .success(let posts):
-                completion(.success(posts))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
-    func getAllPosts(by userId: String?, completion: @escaping ( Result<[Post], Error>) -> Void) {
-        guard let userId = userId else { return }
-        firebaseManager.getDocuments(by: ["ownerId": userId], type: Post.self, forCollection: .posts) { result in
-            switch result {
-            case .success(var posts):
-                posts = posts.sorted(by: { $0.createdAt > $1.createdAt })
                 completion(.success(posts))
             case .failure(let error):
                 completion(.failure(error))
@@ -69,7 +56,7 @@ class PostTableViewModel {
     }
     
     func listenPostChanges(completion: @escaping ([Post]) -> Void) {
-        firebaseManager.listenCollectionChanges(whereIn: ["ownerId": [DefaultsManager.shared.readUser().id]], type: Post.self, collection: .posts) { result in
+        firebaseManager.listenCollectionChanges(type: Post.self, collection: .posts) { result in
             switch result {
             case .success(var posts):
                 posts = posts.sorted(by: { $0.createdAt > $1.createdAt })
@@ -92,37 +79,7 @@ class PostTableViewModel {
             }
         }
     }
-    
-    func addNewPost(post: Post, completion: @escaping (Result<Post, Error>) -> Void) {
-        self.firebaseManager.addDocument(document: post, collection: .posts, completion: { result in
-            switch result {
-            case .success(let post):
-                completion(.success(post))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        })
-    }
 
-    func uploadPostFile(file: UIImage, completion: @escaping (URL) -> Void) {
-        fireStoreManager.uploadPhoto(file: file, route: storageRoute) { fileUrl in
-            completion(fileUrl)
-        }
-    }
-    
-    
-    func editPost(post: Post, completion: @escaping (Post) -> Void) {
-        firebaseManager.updateDocument(document: post, collection: .posts) { result in
-            switch result {
-            case .success(let post):
-                completion(post)
-            case .failure(let error):
-                print("Error", error)
-            }
-        }
-    }
-    
-    
     func removePost(postId: String, completion: @escaping (Result<String, Error>) -> Void) {
         firebaseManager.removeDocument(documentID: postId, collection: .posts) { result in
             switch result {
@@ -164,5 +121,21 @@ class PostTableViewModel {
     func reactionCount(post: Post) -> Int {
         guard !reactions.isEmpty else { return 0 }
         return reactions.filter({ $0.postId == post.id}).count
+    }
+
+    func getPostOwner(post: Post) -> User? {
+        return people.first(where: { $0.id == post.ownerId })
+    }
+
+    func getPeople(completion: @escaping ([User]) -> Void) {
+        firebaseManager.getDocuments(type: User.self, forCollection: .users) { result in
+            switch result {
+            case .success(let people):
+                self.people = people
+                completion(people)
+            case .failure(let error):
+                print("Error while gettings people information", error)
+            }
+        }
     }
 }
