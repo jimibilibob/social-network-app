@@ -8,7 +8,7 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-    
+
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
@@ -25,14 +25,13 @@ class PostTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setupViews()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     func setupViews() {
         mainBackground.backgroundColor = UIColor(named: "backgroundLight")
         mainBackground.layer.cornerRadius = 25
@@ -49,7 +48,7 @@ class PostTableViewCell: UITableViewCell {
         reactionLabel.textColor = hasReacted ? .red : .white
         reactionLabel.text = "\(reactionsCounter)"
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))

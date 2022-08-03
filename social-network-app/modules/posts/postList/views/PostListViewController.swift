@@ -157,7 +157,9 @@ extension PostListViewController: PostTableViewCellDelegate {
             viewModel.addReaction(reaction: Reaction(id: UUID().uuidString, postId: reactedPost.id, ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date()))
             return
         }
-        let reactions = viewModel.reactions.filter({ $0.postId == reactedPost.id })
+        let reactions = viewModel.reactions.filter({ $0.postId == reactedPost.id &&
+            $0.ownerId == DefaultsManager.shared.readUser().id
+        })
         if !reactions.isEmpty {
             viewModel.removeReaction(reactionId: reactions[0].id)
         }
