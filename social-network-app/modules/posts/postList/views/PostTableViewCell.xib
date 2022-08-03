@@ -56,27 +56,10 @@
                                 <rect key="frame" x="8" y="235" width="334" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jyr-bw-ITq">
-                                        <rect key="frame" x="15" y="10" width="156.5" height="30"/>
+                                        <rect key="frame" x="15" y="10" width="74" height="30"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNQ-h3-Ado">
-                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="30"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-44-vVS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="message.fill" catalog="system"/>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5i-0S-bf5">
-                                                        <rect key="frame" x="47" y="0.0" width="20.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9c6-QT-4jM">
-                                                <rect key="frame" x="82.5" y="0.0" width="74" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-kH-Y29">
                                                         <rect key="frame" x="0.0" y="0.0" width="45.5" height="30"/>
@@ -97,10 +80,7 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="pNQ-h3-Ado" firstAttribute="top" secondItem="jyr-bw-ITq" secondAttribute="top" id="AKk-bs-2lu"/>
                                             <constraint firstAttribute="height" constant="30" id="aQQ-qH-5aJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="pNQ-h3-Ado" secondAttribute="bottom" id="hQE-WB-uQI"/>
-                                            <constraint firstItem="pNQ-h3-Ado" firstAttribute="leading" secondItem="jyr-bw-ITq" secondAttribute="leading" id="s2f-ks-Kyq"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -137,8 +117,6 @@
             <connections>
                 <outlet property="avatarImage" destination="qgT-cM-EKO" id="8fE-9U-P8L"/>
                 <outlet property="bottomView" destination="GeN-kS-GG5" id="OM4-qx-aP0"/>
-                <outlet property="commentButton" destination="PiP-44-vVS" id="oCD-a7-45S"/>
-                <outlet property="commentLabel" destination="n5i-0S-bf5" id="i5O-mk-F0F"/>
                 <outlet property="mainBackground" destination="Kh6-z8-aJG" id="xPo-Ql-y9w"/>
                 <outlet property="nameLabel" destination="BlF-9W-9ad" id="l7j-Ws-sWN"/>
                 <outlet property="postImage" destination="98C-U5-wcA" id="4Ty-ON-evE"/>
@@ -151,7 +129,6 @@
     </objects>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="post" width="570" height="380"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

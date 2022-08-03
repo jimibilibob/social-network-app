@@ -133,6 +133,7 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.avatarImage.contentMode = .scaleAspectFill
         cell.delegate = self
         cell.nameLabel.text = postOwner.name
+        cell.userNameLabel.text = "@\(postOwner.name)"
         
         let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))
@@ -152,7 +153,6 @@ extension PostListViewController: PostTableViewCellDelegate {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         let reactedPost = viewModel.posts[indexPath.row]
         let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: reactedPost)
-        // TODO: Check when a User remove an reaction, sometimes removes the other person reaction
         if !hasReacted {
             viewModel.addReaction(reaction: Reaction(id: UUID().uuidString, postId: reactedPost.id, ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date()))
             return
