@@ -62,7 +62,6 @@ class ChatDetailViewController: UIViewController {
                 .cacheOriginalImage
             ]
         )
-        //avatarImage.image = UIImage(named: "avatar")!.imageResize(sizeChange: CGSize(width: 50, height: 50))
         nameLabel.text = participant.name
         mainViewBackground.backgroundColor = UIColor(named: "backgroundLight")
         mainViewBackground.layer.cornerRadius = 25
