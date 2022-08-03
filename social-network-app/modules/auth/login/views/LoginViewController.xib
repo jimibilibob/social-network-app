@@ -10,10 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="Nbl-jM-bQc" id="f0w-qQ-nxX"/>
                 <outlet property="formView" destination="fXl-Kp-BVz" id="ybV-64-Htf"/>
                 <outlet property="loginButton" destination="Oor-wR-Qty" id="ekC-3n-377"/>
                 <outlet property="passwordTextField" destination="Lvz-dw-Nkq" id="mhy-Vo-x1D"/>
-                <outlet property="usernameTextField" destination="Nbl-jM-bQc" id="Zoz-AW-JxL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,7 +28,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uOE-tc-WaD">
                             <rect key="frame" x="38" y="8" width="298" height="200"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihU-b4-50J">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihU-b4-50J">
                                     <rect key="frame" x="0.0" y="0.0" width="298" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>

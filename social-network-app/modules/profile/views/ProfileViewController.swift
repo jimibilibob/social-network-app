@@ -185,6 +185,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.avatarImage.contentMode = .scaleAspectFill
         cell.delegate = self
         cell.nameLabel.text = user.name
+        cell.userNameLabel.text = "@\(user.name)"
         
         let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))

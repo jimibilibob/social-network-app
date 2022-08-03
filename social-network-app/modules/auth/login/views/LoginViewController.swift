@@ -11,7 +11,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var formView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +24,31 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
-        guard let userName = usernameTextField.text,
-              let password = passwordTextField.text else { return }
-        AuthFirebaseManager.shared.login(userName: userName, password: password, completion: { result in
+        guard let email = emailTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            ErrorAlert.shared.showAlert(title: "All fields are required!", target: self)
+            return
+        }
+        guard email.isValidEmail else {
+            ErrorAlert.shared.showAlert(title: "Invalid email", target: self)
+            return
+        }
+        AuthFirebaseManager.shared.login(email: email, password: password, completion: { result in
             switch result {
             case .success(let user):
                 DefaultsManager.shared.storeUser(user: user)
                 SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: true)
                 self.navigationController?.popToRootViewController(animated: true)
             case .failure(let error):
-                print("Error while login \(error)")
+                ErrorAlert.shared.showAlert(title: "\(error)", target: self)
             }
         })
     }
 
     func setupViews() {
         formView.layer.cornerRadius = 15
-        usernameTextField.layer.cornerRadius = 15
-        usernameTextField.clipsToBounds = true
+        emailTextField.layer.cornerRadius = 15
+        emailTextField.clipsToBounds = true
         passwordTextField.layer.cornerRadius = 15
         passwordTextField.clipsToBounds = true
         passwordTextField.isSecureTextEntry = true

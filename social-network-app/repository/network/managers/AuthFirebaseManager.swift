@@ -12,9 +12,9 @@ class AuthFirebaseManager {
     static let shared = AuthFirebaseManager()
     private let defaultAvatar = "https://firebasestorage.googleapis.com/v0/b/social-network-e2f76.appspot.com/o/avatars%2Favatar.png?alt=media&token=3a08931b-376a-47b1-b576-d72a95ee91fa"
     
-    func login(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
+    func login(email: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
         Firestore.firestore().collection(FirebaseCollections.users.rawValue)
-            .whereField("name", isEqualTo: userName)
+            .whereField("email", isEqualTo: email)
             .whereField("password", isEqualTo: password)
             .getDocuments { querySnapshot, error in
                 guard error == nil else { return completion(.failure(error!)) }
@@ -34,8 +34,8 @@ class AuthFirebaseManager {
         }
     }
 
-    func signUp(userName: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
-        let user = User(id: UUID().uuidString, name: userName, age: 0, email: "", avatar: defaultAvatar, password: password, updatedAt: Date(), createdAt: Date())
+    func signUp(name: String, email: String, password: String, completion: @escaping ( Result<User, Error>) -> Void) {
+        let user = User(id: UUID().uuidString, name: name, age: 20, email: email, avatar: defaultAvatar, password: password, updatedAt: Date(), createdAt: Date())
         
         FirebaseManager.shared.addDocument(document: user, collection: .users) { result in
             switch result {
