@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
+                <outlet property="addPostButton" destination="QsL-M7-7V1" id="L03-u1-akA"/>
                 <outlet property="avatarImage" destination="gVm-cl-oKe" id="zRb-kw-c3K"/>
                 <outlet property="messageButton" destination="gOL-qc-opF" id="fwn-m2-GCt"/>
                 <outlet property="nameLabel" destination="Usa-ts-UdA" id="hhr-C7-i4X"/>
@@ -29,12 +30,29 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="669.5"/>
                             <color key="backgroundColor" name="backgroundLight"/>
                         </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsL-M7-7V1">
+                            <rect key="frame" x="334" y="589.5" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="78f-yU-cYP"/>
+                                <constraint firstAttribute="width" constant="50" id="Avz-fv-WCp"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="baseBackgroundColor" systemColor="linkColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="addPostAction:" destination="-1" eventType="touchUpInside" id="FNB-W2-YiM"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="QsL-M7-7V1" secondAttribute="trailing" constant="30" id="4Xi-FA-qmS"/>
                         <constraint firstAttribute="trailing" secondItem="tFr-H4-Hq6" secondAttribute="trailing" id="EdB-4d-NgA"/>
                         <constraint firstAttribute="bottom" secondItem="tFr-H4-Hq6" secondAttribute="bottom" id="WdY-hz-4j3"/>
+                        <constraint firstAttribute="bottom" secondItem="QsL-M7-7V1" secondAttribute="bottom" constant="30" id="lU1-BF-LrG"/>
                         <constraint firstItem="tFr-H4-Hq6" firstAttribute="leading" secondItem="juH-s0-vLN" secondAttribute="leading" id="xLe-65-iS4"/>
                         <constraint firstItem="tFr-H4-Hq6" firstAttribute="top" secondItem="juH-s0-vLN" secondAttribute="top" id="y3p-08-v7e"/>
                     </constraints>
@@ -103,8 +121,12 @@
     </objects>
     <resources>
         <image name="avatar" width="100" height="100"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="backgroundLight">
             <color red="0.90196078431372551" green="0.93333333333333335" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

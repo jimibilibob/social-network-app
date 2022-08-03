@@ -11,8 +11,6 @@ import Kingfisher
 
 class PostListViewController: ImagePickerViewController {
     
-    var hasReacted = false
-    
     @IBOutlet var addPostButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,6 +32,7 @@ class PostListViewController: ImagePickerViewController {
     @IBAction func addPostAction(_ sender: Any) {
         showAddImageOptionAlert()
     }
+
     @objc func addFriends() {
         let chatDetail = FriendListViewController()
         show(chatDetail, sender: nil)
@@ -87,6 +86,7 @@ class PostListViewController: ImagePickerViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        viewModel.reloadTable = tableView.reloadData
         
         tableView.register(UINib(nibName: PostTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PostTableViewCell.identifier)
     }
@@ -143,7 +143,7 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         cell.nameLabel.text = DefaultsManager.shared.readUser().name
         
-        hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
+        let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: post)
         cell.setUpReactionSection(hasReacted: hasReacted, reactionsCounter: viewModel.reactionCount(post: post))
         return cell
     }
@@ -184,9 +184,6 @@ extension PostListViewController: PostDetailViewControllerDelegate {
     func updatePost(post: Post) {
         SVProgressHUD.show()
         self.viewModel.editPost(post: post) { post in
-            // Check why get wo posts
-            // self.tableView.reloadData()
-            //self.tableView.setContentOffset(.zero, animated: true)
             self.navigationController?.popToRootViewController(animated: true)
             SVProgressHUD.dismiss()
             self.showToast(message: "Post edited successfully!", seconds: 2)
@@ -196,25 +193,17 @@ extension PostListViewController: PostDetailViewControllerDelegate {
 
 extension PostListViewController: PostTableViewCellDelegate {
     func react(cell: PostTableViewCell) {
-        hasReacted = !hasReacted
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         let reactedPost = viewModel.posts[indexPath.row]
-        if hasReacted {
+        let hasReacted = viewModel.hasReacted(userId: DefaultsManager.shared.readUser().id, post: reactedPost)
+        if !hasReacted {
             viewModel.addReaction(reaction: Reaction(id: UUID().uuidString, postId: reactedPost.id, ownerId: DefaultsManager.shared.readUser().id, updatedAt: Date(), createdAt: Date()))
-        } else {
-            let reactions = viewModel.reactions.filter({ $0.postId == reactedPost.id })
-            if !reactions.isEmpty {
-                viewModel.removeReaction(reactionId: reactions[0].id)
-            }
+            return
         }
-        viewModel.getAllReactions(posts: viewModel.posts) { result in
-            switch result {
-            case .success(let reactions):
-                self.viewModel.reactions = reactions
-                self.tableView.reloadRows(at: [indexPath], with: .none)
-            case .failure(let error):
-                ErrorAlert.shared.showAlert(title: error.localizedDescription, target: self)
-            }
+        let reactions = viewModel.reactions.filter({ $0.postId == reactedPost.id })
+        if !reactions.isEmpty {
+            viewModel.removeReaction(reactionId: reactions[0].id)
         }
+        self.tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

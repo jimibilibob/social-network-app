@@ -13,6 +13,8 @@ class ProfileViewModel {
     let fireStoreManager = FirebaseStorageManager.shared
     let storageRoute = "posts"
 
+    var reloadTable: (()->Void)?
+
     var posts = [Post]()
     var postData: Data?
 
@@ -21,8 +23,10 @@ class ProfileViewModel {
     init() {
         self.listenPostChanges { posts in
             self.posts = posts
+            self.reloadTable?()
             self.listenReactionsChanges(posts: posts) { reactions in
                 self.reactions = reactions
+                self.reloadTable?()
             }
         }
         
