@@ -29,7 +29,6 @@ class ProfileViewModel {
                 self.reloadTable?()
             }
         }
-        
     }
 
     func getAllPosts(by userId: String?, completion: @escaping ( Result<[Post], Error>) -> Void) {
@@ -191,6 +190,22 @@ class ProfileViewModel {
                case .failure(let error):
                    print("Error on listening posts \(error)")
                }
+        }
+    }
+
+    // MARK: Friends
+    func getAllAcceptedFriends(completion: @escaping ([Friend]) -> Void) {
+        let currentUser = DefaultsManager.shared.readUser()
+        firebaseManager.getDocuments(type: Friend.self, forCollection: .friends) { result in
+            switch result {
+            case .success(var friends):
+                friends = friends.filter({ ($0.receiverUserId ==  currentUser.id ||                    $0.senderUserId == currentUser.id) &&
+                    $0.friendState == FriendState.accepted.rawValue
+                })
+                completion(friends)
+            case .failure(let error):
+                print("Error while getting accepted Friends", error.localizedDescription)
+            }
         }
     }
 }

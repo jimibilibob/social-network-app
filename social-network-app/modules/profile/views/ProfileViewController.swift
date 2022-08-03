@@ -16,6 +16,7 @@ class ProfileViewController: ImagePickerViewController {
         ProfileViewModel()
     }()
     
+    @IBOutlet var friendsLabel: UILabel!
     @IBOutlet var addPostButton: UIButton!
     @IBOutlet var messageButton: UIButton!
     @IBOutlet var avatarImage: UIImageView!
@@ -26,6 +27,16 @@ class ProfileViewController: ImagePickerViewController {
         super.viewDidLoad()
         setupViews()
         loadPosts()
+        setFriendsLabel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if user.id == DefaultsManager.shared.readUser().id {
+            user = DefaultsManager.shared.readUser()
+        }
+        setupViews()
+        loadPosts()
+        setFriendsLabel()
     }
 
     init(user: User = DefaultsManager.shared.readUser()) {
@@ -58,6 +69,12 @@ class ProfileViewController: ImagePickerViewController {
             case .failure(let error):
                 ErrorAlert.shared.showAlert(title: "Error while fetching reactions", message: error.localizedDescription, target: self)
             }
+        }
+    }
+
+    func setFriendsLabel() {
+        viewModel.getAllAcceptedFriends() { friends in
+            self.friendsLabel.text = "\(friends.count) Friends"
         }
     }
 
@@ -115,6 +132,8 @@ class ProfileViewController: ImagePickerViewController {
         // MARK: Show the buttons to message just in case the profile is not from the current User
         if user.id == DefaultsManager.shared.readUser().id {
             messageButton.isHidden = true
+        } else {
+            addPostButton.isHidden = true
         }
     }
 

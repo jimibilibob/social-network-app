@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="addPostButton" destination="QsL-M7-7V1" id="L03-u1-akA"/>
                 <outlet property="avatarImage" destination="gVm-cl-oKe" id="zRb-kw-c3K"/>
+                <outlet property="friendsLabel" destination="Ndl-LC-Tve" id="Ibs-Og-RwM"/>
                 <outlet property="messageButton" destination="gOL-qc-opF" id="fwn-m2-GCt"/>
                 <outlet property="nameLabel" destination="Usa-ts-UdA" id="hhr-C7-i4X"/>
                 <outlet property="tableView" destination="tFr-H4-Hq6" id="kvH-Br-1B9"/>
@@ -85,14 +86,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="82" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Message">
-                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseBackgroundColor" systemColor="tintColor"/>
                                     </buttonConfiguration>
                                     <connections>
                                         <action selector="messageAction:" destination="-1" eventType="touchUpInside" id="XIf-lj-Yj5"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndl-LC-Tve">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndl-LC-Tve">
                                     <rect key="frame" x="0.0" y="43" width="82" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
@@ -126,6 +127,9 @@
             <color red="0.90196078431372551" green="0.93333333333333335" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
