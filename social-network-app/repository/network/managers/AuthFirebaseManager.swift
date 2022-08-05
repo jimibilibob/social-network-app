@@ -17,7 +17,7 @@ class AuthFirebaseManager {
             .whereField("email", isEqualTo: email)
             .whereField("password", isEqualTo: password)
             .getDocuments { querySnapshot, error in
-                guard error == nil else { return completion(.failure(error!)) }
+                guard let error = error else { return completion(.failure(error)) }
                 guard let documents = querySnapshot?.documents, !documents.isEmpty
                        else { return completion(.failure(FirebaseErrors.InvalidUser)) }
                 

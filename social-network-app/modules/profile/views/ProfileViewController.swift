@@ -156,7 +156,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let post = viewModel.posts[indexPath.row]
         let url = URL(string: post.photo)
         let processor = DownsamplingImageProcessor(size: cell.postImage.bounds.size)
-                     |> RoundCornerImageProcessor(cornerRadius: 25)
         cell.postImage.kf.indicatorType = .activity
         cell.postImage.kf.setImage(
             with: url,

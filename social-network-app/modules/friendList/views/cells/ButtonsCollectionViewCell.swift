@@ -30,7 +30,7 @@ class ButtonsCollectionViewCell: UICollectionViewCell {
             let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnAddFriend))
             image.addGestureRecognizer(tap)
         case .remove:
-            image.image = UIImage(systemName: "xmark")
+            image.image = UIImage(systemName: "xmark")?.withTintColor(.red, renderingMode: .alwaysOriginal)
             let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnRemoveFriend))
             image.addGestureRecognizer(tap)
         }
